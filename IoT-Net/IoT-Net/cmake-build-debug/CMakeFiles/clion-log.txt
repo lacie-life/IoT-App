@@ -1,0 +1,25 @@
+/snap/clion/138/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/lacie/Github/UP-IoT/App/IoT-Net/IoT-Net
+-- The CXX compiler identification is GNU 9.3.0
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ - works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Error at /usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake:28 (find_package):
+  Could not find a package configuration file provided by "Qt5Qml" with any
+  of the following names:
+
+    Qt5QmlConfig.cmake
+    qt5qml-config.cmake
+
+  Add the installation prefix of "Qt5Qml" to CMAKE_PREFIX_PATH or set
+  "Qt5Qml_DIR" to a directory containing one of the above files.  If "Qt5Qml"
+  provides a separate development package or SDK, be sure it has been
+  installed.
+Call Stack (most recent call first):
+  CMakeLists.txt:12 (find_package)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/lacie/Github/UP-IoT/App/IoT-Net/IoT-Net/cmake-build-debug/CMakeFiles/CMakeOutput.log".

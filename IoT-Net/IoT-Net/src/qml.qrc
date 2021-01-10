@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>MainScreen.qml</file>
+        <file>Common/QSelectButton.qml</file>
+        <file>Common/QTest.qml</file>
+        <file>Common/QCell.qml</file>
+    </qresource>
+</RCC>
