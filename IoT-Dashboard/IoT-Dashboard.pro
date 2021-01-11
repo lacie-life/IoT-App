@@ -6,8 +6,17 @@ CONFIG += c++11
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+HEADERS += \
+    Constants_Def.h \
+    hdr/AppEngine.h \
+    hdr/Model/Constants_Def.h
+
 SOURCES += \
-        main.cpp
+        Constants_Def.cpp \
+        main.cpp \
+        src/AppEngine.cpp \
+        src/Model/Constants_Def.cpp \
+        src/main.cpp
 
 RESOURCES += qml.qrc
 
