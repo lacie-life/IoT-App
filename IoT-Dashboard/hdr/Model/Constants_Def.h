@@ -3,8 +3,6 @@
 
 #include <QObject>
 
-
-
 #define CONSTANT Constants_Def::instance()
 
 class Constants_Def : public QObject
