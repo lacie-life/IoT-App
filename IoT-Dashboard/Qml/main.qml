@@ -3,8 +3,13 @@ import QtQuick.Window 2.12
 
 Window
 {
-    width: 640
-    height: 480
+    width: CONST.MAX_WIDTH
+    height: CONST.MAX_HEIGHT
     visible: true
-    title: qsTr("Hello World")
+
+    Loader
+    {
+        anchors.fill: parent
+        source: "qrc:/Qml/MainScreen.qml"
+    }
 }

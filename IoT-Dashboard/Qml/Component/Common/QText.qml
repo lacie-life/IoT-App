@@ -3,8 +3,11 @@ import QtQuick 2.0
 Text
 {
     id: root
-    property alias isBold: font.bold
+    property bool isBold: false
+    property int fontSize: 25
 
-    font.bold: false
+    font.bold: isBold
+    font.pixelSize: fontSize
     text: ""
+    color: "#ffffff"
 }
