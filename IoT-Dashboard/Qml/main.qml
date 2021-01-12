@@ -10,6 +10,6 @@ Window
     Loader
     {
         anchors.fill: parent
-        source: "qrc:/Qml/MainScreen.qml"
+        source: "qrc:/qml/MainScreen.qml"
     }
 }

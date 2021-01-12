@@ -7,13 +7,14 @@ QButton
 
     // properties edclare here
     property bool isActive: false
+    property bool isEnable: true
     property alias noodColor: noodID.color
 
 
     readonly property int noodSizeOffset: 10
     readonly property int noodPosLeft: noodSizeOffset / 2
     readonly property int noodPosRight: width - noodID.width - noodSizeOffset / 2
-
+    readonly property int switchTime: 150
 
     // main
     width: 100
@@ -45,10 +46,21 @@ QButton
         properties: "anchors.leftMargin"
         from: root.noodPosLeft
         to: root.noodPosRight
-        duration: 150
+        duration: root.switchTime
         running: false
         alwaysRunToEnd: true
         easing.type: Easing.OutQuad
+
+        onStarted:
+        {
+            isEnable = false
+            reEnableTimer.start()
+        }
+
+        onStopped:
+        {
+            isActive = true;
+        }
     }
 
     PropertyAnimation
@@ -58,23 +70,45 @@ QButton
         properties: "anchors.leftMargin"
         from: root.noodPosRight
         to: root.noodPosLeft
-        duration: 150
+        duration: root.switchTime
         running: false
         alwaysRunToEnd: true
         easing.type: Easing.OutQuad
+
+        onStarted:
+        {
+            isEnable = false
+            reEnableTimer.start()
+        }
+
+        onStopped:
+        {
+            isActive = false
+        }
     }
 
     onClicked:
     {
-        if (isActive)
+        if (isEnable)
         {
-            turnOff.start()
+            if (isActive)
+            {
+                turnOff.start()
+            }
+            else
+            {
+                turnOn.start()
+            }
         }
-        else
-        {
-            turnOn.start()
-        }
+    }
 
-        isActive = !isActive
+    QTimer
+    {
+        id: reEnableTimer
+        interval: root.switchTime
+        onTriggered:
+        {
+            isEnable = true
+        }
     }
 }

@@ -1,4 +1,4 @@
-#include "../../Hdr/Model/Constants_Def.h"
+#include "../../hdr/Model/Constants_Def.h"
 
 Constants_Def* Constants_Def::m_instance = nullptr;
 QMutex Constants_Def::m_lock;
