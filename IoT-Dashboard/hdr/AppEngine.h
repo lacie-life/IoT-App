@@ -5,6 +5,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include "Model/Constants_Def.h"
+#include "View/Screen_Def.h"
 
 class AppEngine : public QObject
 {

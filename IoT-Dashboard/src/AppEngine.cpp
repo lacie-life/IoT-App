@@ -16,6 +16,6 @@ void AppEngine::prepareApplication()
 
 void AppEngine::runApplication()
 {
-    m_engine.load(CONST_MODEL->MAIN_QML_URL());
+    m_engine.load(MAIN_SCREEN);
 
 }

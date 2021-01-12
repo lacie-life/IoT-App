@@ -53,9 +53,6 @@ private:
     DEF_INT(MAX_WIDTH, 640)
     DEF_INT(MAX_HEIGHT, 480)
 
-    // constant URL
-    DEF_TYPE(QUrl, MAIN_QML_URL, QStringLiteral("qrc:/qml/main.qml"))
-
     // constant color
     DEF_TYPE(QColor, SWITCH_OFF_COLOR, "#ADADAD")
     DEF_TYPE(QColor, SWITCH_ON_COLOR, "#00CCD9")
