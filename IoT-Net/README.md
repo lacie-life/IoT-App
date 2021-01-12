@@ -1,2 +1,0 @@
-# QML
-Q_PROPERTY ???
