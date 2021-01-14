@@ -6,6 +6,7 @@
 #include <QQmlContext>
 #include "Model/Constants_Def.h"
 #include "View/Screen_Def.h"
+#include "Plugin/QCircleMeter.h"
 
 class AppEngine : public QObject
 {

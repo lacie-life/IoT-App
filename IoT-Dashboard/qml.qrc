@@ -8,5 +8,6 @@
         <file>qml/main.qml</file>
         <file>qml/MainScreen.qml</file>
         <file>qml/Component/Common/QTimer.qml</file>
+        <file>qml/Component/QSensorClock.qml</file>
     </qresource>
 </RCC>
