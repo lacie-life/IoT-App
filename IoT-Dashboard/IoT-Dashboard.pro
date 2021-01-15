@@ -12,20 +12,23 @@ SOURCE_PATH = ./src
 INCLUDEPATH += \
     $$HEADER_PATH \
     $$HEADER_PATH/Model \
-    $$HEADER_PATH/Plugin
+    $$HEADER_PATH/Plugin \
+    $$HEADER_PATH/DBController
 
 HEADERS += \
     $$HEADER_PATH/AppEngine.h \
     $$HEADER_PATH/Model/Constants_Def.h \
     $$HEADER_PATH/Plugin/QCircleMeter.h \
-    $$HEADER_PATH/Plugin/SensorsMQTT.h
+    $$HEADER_PATH/Plugin/SensorsMQTT.h \
+    $$HEADER_PATH/DBController/QMongoDB.h
 
 SOURCES += \
         $$SOURCE_PATH/AppEngine.cpp \
         $$SOURCE_PATH/Model/Constants_Def.cpp \
         $$SOURCE_PATH/Plugin/QCircleMeter.cpp \
         $$SOURCE_PATH/Plugin/SensorsMQTT.cpp \
-        $$SOURCE_PATH/main.cpp
+        $$SOURCE_PATH/main.cpp \
+        $$SOURCE_PATH/DBController/QMongoDB.cpp
 
 RESOURCES += qml.qrc
 
