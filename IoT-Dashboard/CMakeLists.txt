@@ -32,12 +32,12 @@ find_package(libbsoncxx REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
-        src/qmongodb.cpp
+        src/Plugin/qmongodb.cpp
         src/AppEngine.cpp
         src/Model/Constants_Def.cpp
         src/Plugin/QCircleMeter.cpp
         hdr/AppEngine.h
-        hdr/qmongodb.h
+        hdr/Plugin/qmongodb.h
         hdr/Model/Constants_Def.h
         hdr/View/Screen_Def.h
         hdr/Plugin/QCircleMeter.h
