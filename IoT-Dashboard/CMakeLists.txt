@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(IoT-Sensors LANGUAGES CXX)
+project(IoT-Dashboard LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -24,8 +24,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 #    endif()
 #endif()
 
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
+find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick Mqtt REQUIRED)
+find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
 
 find_package(libmongocxx REQUIRED)
 find_package(libbsoncxx REQUIRED)
@@ -33,7 +33,14 @@ find_package(libbsoncxx REQUIRED)
 set(PROJECT_SOURCES
         src/main.cpp
         src/qmongodb.cpp
-        src/qmongodb.h
+        src/AppEngine.cpp
+        src/Model/Constants_Def.cpp
+        src/Plugin/QCircleMeter.cpp
+        hdr/AppEngine.h
+        hdr/qmongodb.h
+        hdr/Model/Constants_Def.h
+        hdr/View/Screen_Def.h
+        hdr/Plugin/QCircleMeter.h
         qml.qrc
 )
 
@@ -46,22 +53,22 @@ include_directories("/usr/local/include/libbson-1.0")
 include_directories("/usr/local/lib")
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(IoT-Sensors
+    qt_add_executable(IoT-Dashboard
         ${PROJECT_SOURCES}
     )
 else()
     if(ANDROID)
-        add_library(IoT-Sensors SHARED
+        add_library(IoT-Dashboard SHARED
             ${PROJECT_SOURCES}
         )
     else()
-        add_executable(IoT-Sensors
+        add_executable(IoT-Dashboard
           ${PROJECT_SOURCES}
         )
     endif()
 endif()
 
-target_compile_definitions(IoT-Sensors
+target_compile_definitions(IoT-Dashboard
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(IoT-Sensors
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
+target_link_libraries(IoT-Dashboard
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
