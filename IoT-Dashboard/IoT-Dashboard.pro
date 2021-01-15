@@ -9,12 +9,14 @@ CONFIG += c++11
 HEADERS += \
     hdr/AppEngine.h \
     hdr/Model/Constants_Def.h \
-    hdr/Plugin/QCircleMeter.h
+    hdr/Plugin/QCircleMeter.h \
+    hdr/Plugin/sensorsmqtt.h
 
 SOURCES += \
         src/AppEngine.cpp \
         src/Model/Constants_Def.cpp \
         src/Plugin/QCircleMeter.cpp \
+        src/Plugin/sensorsmqtt.cpp \
         src/main.cpp
 
 RESOURCES += qml.qrc
