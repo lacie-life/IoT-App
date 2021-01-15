@@ -1,6 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include "hdr/AppEngine.h"
+#include "AppEngine.h"
 
 int main(int argc, char *argv[])
 {

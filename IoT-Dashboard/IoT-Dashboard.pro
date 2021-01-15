@@ -2,22 +2,30 @@ QT += quick
 
 CONFIG += c++11
 
+HEADER_PATH = ./hdr
+SOURCE_PATH = ./src
+
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
+INCLUDEPATH += \
+    $$HEADER_PATH \
+    $$HEADER_PATH/Model \
+    $$HEADER_PATH/Plugin
+
 HEADERS += \
-    hdr/AppEngine.h \
-    hdr/Model/Constants_Def.h \
-    hdr/Plugin/QCircleMeter.h \
-    hdr/Plugin/sensorsmqtt.h
+    $$HEADER_PATH/AppEngine.h \
+    $$HEADER_PATH/Model/Constants_Def.h \
+    $$HEADER_PATH/Plugin/QCircleMeter.h \
+    $$HEADER_PATH/Plugin/SensorsMQTT.h
 
 SOURCES += \
-        src/AppEngine.cpp \
-        src/Model/Constants_Def.cpp \
-        src/Plugin/QCircleMeter.cpp \
-        src/Plugin/sensorsmqtt.cpp \
-        src/main.cpp
+        $$SOURCE_PATH/AppEngine.cpp \
+        $$SOURCE_PATH/Model/Constants_Def.cpp \
+        $$SOURCE_PATH/Plugin/QCircleMeter.cpp \
+        $$SOURCE_PATH/Plugin/SensorsMQTT.cpp \
+        $$SOURCE_PATH/main.cpp
 
 RESOURCES += qml.qrc
 

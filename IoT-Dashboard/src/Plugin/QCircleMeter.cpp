@@ -1,4 +1,4 @@
-#include "../../hdr/Plugin/QCircleMeter.h"
+#include "Plugin/QCircleMeter.h"
 
 QCircleMeter::QCircleMeter(QQuickItem *parent)
     : QQuickPaintedItem{ parent }

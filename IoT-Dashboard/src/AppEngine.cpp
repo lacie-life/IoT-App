@@ -1,4 +1,4 @@
-#include "../hdr/AppEngine.h"
+#include "AppEngine.h"
 
 AppEngine::AppEngine(QObject *parent)
     : QObject{ parent }
