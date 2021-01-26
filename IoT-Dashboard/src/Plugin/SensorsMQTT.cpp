@@ -1,4 +1,4 @@
-#include "SensorsMQTT.h"
+#include "../../hdr/Plugin/SensorsMQTT.h"
 
 SensorsMQTT::SensorsMQTT()
 {

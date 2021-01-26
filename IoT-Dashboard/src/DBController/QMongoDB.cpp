@@ -1,4 +1,4 @@
-#include "QMongoDB.h"
+#include "../../hdr/DBController/QMongoDB.h"
 
 QMongoDB::QMongoDB()
 {
