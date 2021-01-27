@@ -37,12 +37,14 @@ set(PROJECT_SOURCES
         src/Model/Constants_Def.cpp
         src/Plugin/QCircleMeter.cpp
         src/Plugin/SensorsMQTT.cpp
+        src/Plugin/QChartDB.cpp
         hdr/AppEngine.h
         hdr/DBController/QMongoDB.h
         hdr/Model/Constants_Def.h
         hdr/View/Screen_Def.h
         hdr/Plugin/QCircleMeter.h
         hdr/Plugin/SensorsMQTT.h
+        hdr/Plugin/QChartDB.h
         qml.qrc
 )
 
