@@ -1,6 +1,8 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "qmongodb.h"
+#include <iostream>
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +23,10 @@ int main(int argc, char *argv[])
 
     QMongoDB test;
     test.initHosting();
+    qDebug() << test.Nodes.size();
+    for (int i = 0; i < test.Nodes.size(); i++){
+        qDebug() << i << "-" << test.Nodes.at(i).database << "-" << test.Nodes.at(i).collection;
+    }
 
     return app.exec();
 }

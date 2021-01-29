@@ -13,8 +13,8 @@
 #include <mongocxx/instance.hpp>
 
 struct nodeData{
-    std::string database;
-    std::string collection;
+    QString database;
+    QString collection;
 };
 
 class QMongoDB : public QObject
@@ -29,9 +29,9 @@ public:
     bool insertData(QJsonObject item);
     bool deleteData(QJsonObject item);
     bool changeData(QJsonObject item);
+    QVector<nodeData> Nodes;
 
 private:
-    QVector<nodeData> Node;
     QString mongodb_uri;
     QVector<QString> hostnames;
 
