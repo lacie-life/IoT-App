@@ -11,6 +11,7 @@
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
+#include <mongocxx/uri.hpp>
 
 struct QNodeData{
     QString database;
@@ -25,7 +26,7 @@ public:
     ~QMongoDB();
 
     int initHosting();
-    QJsonObject getData(QNodeData Node);
+    QJsonArray getData(QNodeData Node);
     bool insertData(QJsonObject item, QNodeData Node);
     bool deleteData(QJsonObject item, QNodeData Node);
     bool changeData(QJsonObject item, QNodeData Node);
@@ -35,6 +36,7 @@ private:
     QString mongodb_uri;
     QVector<QString> hostnames;
 
+    QJsonObject ObjectFromString(const QString& in);
 };
 
 #endif // QMONGODB_H

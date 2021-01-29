@@ -6,6 +6,16 @@ QMongoDB::QMongoDB(){}
 
 QMongoDB::~QMongoDB(){}
 
+QJsonObject QMongoDB::ObjectFromString(const QString &in)
+{
+    QByteArray br = in.toUtf8();
+    QJsonDocument doc = QJsonDocument::fromJson(br);
+
+    QJsonObject obj = doc.object();
+    return obj;
+}
+
+
 int QMongoDB::initHosting()
 {
     QFile f("/home/lacie/Github/IoT-App/IoT-Sensors-DB/data/mongodb.json");
@@ -39,9 +49,24 @@ int QMongoDB::initHosting()
     return 0;
 }
 
-QJsonObject QMongoDB::getData(QNodeData Node)
+QJsonArray QMongoDB::getData(QNodeData Node)
 {
+    mongocxx::instance instance{};
+    mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
+    mongocxx::client client(uri);
 
+    mongocxx::database db = client[Node.database.toStdString()];
+    mongocxx::collection coll = db[Node.collection.toStdString()];
+
+    mongocxx::cursor cursor = coll.find({});
+    QJsonArray data;
+    int i = 0;
+    for (auto doc : cursor){
+        std::string temp =  bsoncxx::to_json(doc);
+        data[i] =  ObjectFromString(QString::fromStdString(temp));
+        i++;
+    }
+    return data;
 }
 
 bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
@@ -58,3 +83,5 @@ bool QMongoDB::changeData(QJsonObject item, QNodeData Node)
 {
 
 }
+
+
