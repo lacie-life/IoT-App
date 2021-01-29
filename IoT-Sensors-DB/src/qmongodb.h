@@ -6,15 +6,20 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QVector>
-
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
-class QMongoDB
+struct nodeData{
+    std::string database;
+    std::string collection;
+};
+
+class QMongoDB : public QObject
 {
+    Q_OBJECT
 public:
     QMongoDB();
     ~QMongoDB();
@@ -26,9 +31,9 @@ public:
     bool changeData(QJsonObject item);
 
 private:
-    QVector<QString> database;
-    QVector<QString> collection;
+    QVector<nodeData> Node;
     QString mongodb_uri;
+    QVector<QString> hostnames;
 
 };
 

@@ -40,8 +40,8 @@ set(PROJECT_SOURCES
 include_directories(${LIBMONGOCXX_INCLUDE_DIR})
 include_directories(${LIBBSONCXX_INCLUDE_DIR})
 include_directories("/usr/local/include/mongocxx/v_noabi")
-include_directories("/usr/local/include/bsoncxx/v_noabi")
 include_directories("/usr/local/include/libmongoc-1.0")
+include_directories("/usr/local/include/bsoncxx/v_noabi")
 include_directories("/usr/local/include/libbson-1.0")
 include_directories("/usr/local/lib")
 
