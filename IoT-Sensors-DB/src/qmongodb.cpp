@@ -2,6 +2,8 @@
 #include <QFile>
 #include <QDebug>
 
+using json = nlohmann::json;
+
 QMongoDB::QMongoDB(){}
 
 QMongoDB::~QMongoDB(){}
@@ -13,6 +15,15 @@ QJsonObject QMongoDB::ObjectFromString(const QString &in)
 
     QJsonObject obj = doc.object();
     return obj;
+}
+
+std::string QMongoDB::StringFromObject(const QJsonObject &in)
+{
+    QJsonDocument doc(in);
+    QString strFromObj = doc.toJson(QJsonDocument::Compact).toStdString().c_str();
+    std::string temp = strFromObj.toStdString();
+
+    return temp;
 }
 
 
@@ -27,6 +38,7 @@ int QMongoDB::initHosting()
 
         QJsonObject t_obj = array[i].toObject();
         hostnames.push_back(t_obj["hostname"].toString());
+        mongodb_uri.push_back("mongodb://" + hostnames.at(i) + ":27017");
 //        qDebug() << i << "-" << hostnames[i];
 
         QJsonArray db_array = t_obj["databases"].toArray();
@@ -71,7 +83,19 @@ QJsonArray QMongoDB::getData(QNodeData Node)
 
 bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
 {
+    mongocxx::instance instance{};
+    mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
+    mongocxx::client client(uri);
 
+    mongocxx::database db = client[Node.database.toStdString()];
+    mongocxx::collection coll = db[Node.collection.toStdString()];
+
+    std::string doc = StringFromObject(item);
+    json test = json::parse(doc);
+
+    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = coll.insert_one(std::move(test));
+
+    return true;
 }
 
 bool QMongoDB::deleteData(QJsonObject item, QNodeData Node)

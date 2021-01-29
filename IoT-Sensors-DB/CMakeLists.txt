@@ -10,6 +10,7 @@ set(CMAKE_AUTORCC ON)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(JSON_BuildTests OFF CACHE INTERNAL "")
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check https://doc.qt.io/qt/deployment-android.html for more information.
@@ -29,6 +30,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
 
 find_package(libmongocxx REQUIRED)
 find_package(libbsoncxx REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
@@ -64,4 +66,4 @@ endif()
 target_compile_definitions(IoT-Sensors
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(IoT-Sensors
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
+  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES} nlohmann_json::nlohmann_json)

@@ -6,6 +6,9 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QVector>
+
+#include <nlohmann/json.hpp>
+
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
 
@@ -33,10 +36,11 @@ public:
     QVector<QNodeData> Nodes;
 
 private:
-    QString mongodb_uri;
+    QVector<QString> mongodb_uri;
     QVector<QString> hostnames;
 
     QJsonObject ObjectFromString(const QString& in);
+    std::string StringFromObject(const QJsonObject& in);
 };
 
 #endif // QMONGODB_H
