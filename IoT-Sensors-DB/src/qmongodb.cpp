@@ -28,7 +28,7 @@ int QMongoDB::initHosting()
             QJsonArray collection_array = t_db["collection"].toArray();
 
             for (int k = 0; k < collection_array.size(); k++){
-                nodeData t_node;
+                QNodeData t_node;
                 t_node.database = t_db["name"].toString();
                 t_node.collection = collection_array[k].toString();
                 Nodes.push_back(t_node);
@@ -39,22 +39,22 @@ int QMongoDB::initHosting()
     return 0;
 }
 
-QJsonObject QMongoDB::getData(QString database, QString collection)
+QJsonObject QMongoDB::getData(QNodeData Node)
 {
 
 }
 
-bool QMongoDB::insertData(QJsonObject item)
+bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
 {
 
 }
 
-bool QMongoDB::deleteData(QJsonObject item)
+bool QMongoDB::deleteData(QJsonObject item, QNodeData Node)
 {
 
 }
 
-bool QMongoDB::changeData(QJsonObject item)
+bool QMongoDB::changeData(QJsonObject item, QNodeData Node)
 {
 
 }

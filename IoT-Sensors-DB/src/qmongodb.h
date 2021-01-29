@@ -12,7 +12,7 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
 
-struct nodeData{
+struct QNodeData{
     QString database;
     QString collection;
 };
@@ -25,11 +25,11 @@ public:
     ~QMongoDB();
 
     int initHosting();
-    QJsonObject getData(QString database, QString collection);
-    bool insertData(QJsonObject item);
-    bool deleteData(QJsonObject item);
-    bool changeData(QJsonObject item);
-    QVector<nodeData> Nodes;
+    QJsonObject getData(QNodeData Node);
+    bool insertData(QJsonObject item, QNodeData Node);
+    bool deleteData(QJsonObject item, QNodeData Node);
+    bool changeData(QJsonObject item, QNodeData Node);
+    QVector<QNodeData> Nodes;
 
 private:
     QString mongodb_uri;
