@@ -11,6 +11,8 @@
 
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/json.hpp>
+#include <bsoncxx/types.hpp>
+#include <bsoncxx/document/element.hpp>
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/instance.hpp>
@@ -41,6 +43,9 @@ private:
 
     QJsonObject ObjectFromString(const QString& in);
     std::string StringFromObject(const QJsonObject& in);
+    bsoncxx::document::view toBson(const QJsonObject& in);
+    QJsonObject toJson(bsoncxx::document::view view);
+    QString StringFromBson(bsoncxx::document::view view, std::string key);
 };
 
 #endif // QMONGODB_H

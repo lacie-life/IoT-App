@@ -26,6 +26,50 @@ std::string QMongoDB::StringFromObject(const QJsonObject &in)
     return temp;
 }
 
+bsoncxx::document::view QMongoDB::toBson(const QJsonObject &in)
+{
+    if(in.isEmpty()){
+        return ::bsoncxx::document::view();
+    }
+
+    QJsonDocument doc(in);
+    std::string json = doc.toJson().data();
+    return bsoncxx::from_json(json).view();
+}
+
+QJsonObject QMongoDB::toJson(bsoncxx::document::view view)
+{
+    if(view.empty()){
+        return QJsonObject();
+    }
+
+    std::string json = bsoncxx::to_json(view);
+    QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(json));
+
+    if(doc.isObject()){
+        return doc.object();
+    }
+    else {
+        return QJsonObject();
+    }
+}
+
+QString QMongoDB::StringFromBson(bsoncxx::document::view view, std::string key)
+{
+    if(view.empty()){
+        return QString();
+    }
+
+    bsoncxx::document::element element = view[key];
+    if(element.type() == bsoncxx::type::k_utf8){
+        std::string value = element.get_utf8().value.to_string();
+        return QString::fromStdString(value);
+    }
+    else {
+        return QString();
+    }
+}
+
 
 int QMongoDB::initHosting()
 {
@@ -90,10 +134,8 @@ bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
     mongocxx::database db = client[Node.database.toStdString()];
     mongocxx::collection coll = db[Node.collection.toStdString()];
 
-    std::string doc = StringFromObject(item);
-    json test = json::parse(doc);
-
-    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = coll.insert_one(std::move(test));
+    bsoncxx::document::view doc = toBson(item);
+    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = coll.insert_one(doc);
 
     return true;
 }
