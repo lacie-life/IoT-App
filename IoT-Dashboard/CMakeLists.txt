@@ -30,6 +30,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
 
 find_package(libmongocxx REQUIRED)
 find_package(libbsoncxx REQUIRED)
+find_package(nlohmann_json 3.2.0 REQUIRED)
 
 set(PROJECT_SOURCES
         src/main.cpp
