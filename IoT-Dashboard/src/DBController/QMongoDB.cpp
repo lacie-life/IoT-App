@@ -4,6 +4,12 @@
 #include <QDebug>
 
 using json = nlohmann::json;
+using bsoncxx::builder::stream::close_array;
+using bsoncxx::builder::stream::close_document;
+using bsoncxx::builder::stream::document;
+using bsoncxx::builder::stream::finalize;
+using bsoncxx::builder::stream::open_array;
+using bsoncxx::builder::stream::open_document;
 
 QMongoDB::QMongoDB(){}
 
@@ -27,10 +33,53 @@ std::string QMongoDB::StringFromObject(const QJsonObject &in)
     return temp;
 }
 
+bsoncxx::document::view QMongoDB::toBson(const QJsonObject &in)
+{
+    if(in.isEmpty()){
+        return ::bsoncxx::document::view();
+    }
+
+    QJsonDocument doc(in);
+    std::string json = doc.toJson().data();
+    return bsoncxx::from_json(json).view();
+}
+
+QJsonObject QMongoDB::toJson(bsoncxx::document::view view)
+{
+    if(view.empty()){
+        return QJsonObject();
+    }
+
+    std::string json = bsoncxx::to_json(view);
+    QJsonDocument doc = QJsonDocument::fromJson(QByteArray::fromStdString(json));
+
+    if(doc.isObject()){
+        return doc.object();
+    }
+    else {
+        return QJsonObject();
+    }
+}
+
+QString QMongoDB::StringFromBson(bsoncxx::document::view view, std::string key)
+{
+    if(view.empty()){
+        return QString();
+    }
+
+    bsoncxx::document::element element = view[key];
+    if(element.type() == bsoncxx::type::k_utf8){
+        std::string value = element.get_utf8().value.to_string();
+        return QString::fromStdString(value);
+    }
+    else {
+        return QString();
+    }
+}
 
 int QMongoDB::initHosting()
 {
-    QFile f("/home/lacie/Github/IoT-App/IoT-Sensors-DB/data/mongodb.json");
+    QFile f(path);
     f.open(QIODevice::ReadOnly | QIODevice::Text);
     QString val = f.readAll();
     QJsonArray array = QJsonDocument::fromJson(val.toUtf8()).array();
@@ -82,7 +131,7 @@ QJsonArray QMongoDB::getData(QNodeData Node)
     return data;
 }
 
-bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
+void QMongoDB::insertData(QJsonObject item, QNodeData Node)
 {
     mongocxx::instance instance{};
     mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
@@ -91,23 +140,58 @@ bool QMongoDB::insertData(QJsonObject item, QNodeData Node)
     mongocxx::database db = client[Node.database.toStdString()];
     mongocxx::collection coll = db[Node.collection.toStdString()];
 
-    std::string doc = StringFromObject(item);
-    json test = json::parse(doc);
-
-    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = coll.insert_one(std::move(test));
-
-    return true;
+    bsoncxx::document::view doc = toBson(item);
+    bsoncxx::stdx::optional<mongocxx::result::insert_one> result = coll.insert_one(doc);
 }
 
-bool QMongoDB::deleteData(QJsonObject item, QNodeData Node)
+void QMongoDB::deleteData(QJsonObject item, QNodeData Node)
 {
+    mongocxx::instance instance{};
+    mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
+    mongocxx::client client(uri);
 
+    mongocxx::database db = client[Node.database.toStdString()];
+    mongocxx::collection coll = db[Node.collection.toStdString()];
+
+    bsoncxx::document::view doc = toBson(item);
+
+    bsoncxx::stdx::optional<mongocxx::result::delete_result> result = coll.delete_one(doc);
 }
 
-bool QMongoDB::changeData(QJsonObject item, QNodeData Node)
+void QMongoDB::updateData(QNodeData Node, QVector<QString> key, QVector<QString> oldValue, QVector<QString> newValue)
 {
+    mongocxx::instance instance{};
+    mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
+    mongocxx::client client(uri);
 
+    mongocxx::database db = client[Node.database.toStdString()];
+    mongocxx::collection coll = db[Node.collection.toStdString()];
+
+    for (int i = 0; i < key.size(); i++){
+        coll.update_one(document{} << key.at(i).toStdString() << oldValue.at(i).toStdString() << finalize,
+                        document{} << "$set" << open_document << key.at(i).toStdString() << newValue.at(i).toStdString() <<
+                        close_document << finalize);
+    }
 }
 
+QJsonArray QMongoDB::queryFilter(QNodeData Node, QString key, QString value)
+{
+    mongocxx::instance instance{};
+    mongocxx::uri uri("mongodb://" + hostnames.at(0).toStdString() + ":27017");
+    mongocxx::client client(uri);
+
+    mongocxx::database db = client[Node.database.toStdString()];
+    mongocxx::collection coll = db[Node.collection.toStdString()];
+
+    mongocxx::cursor cursor = coll.find(document{} << key.toStdString() << value.toStdString() << finalize);
+    QJsonArray data;
+    int i = 0;
+    for (auto doc : cursor){
+        std::string temp =  bsoncxx::to_json(doc);
+        data[i] =  ObjectFromString(QString::fromStdString(temp));
+        i++;
+    }
+    return data;
+}
 
 
