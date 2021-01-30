@@ -18,7 +18,7 @@
 #include <mongocxx/instance.hpp>
 #include <mongocxx/uri.hpp>
 
-#define path "/home/lacie/Github/IoT-App/IoT-Sensors-DB/data/mongodb.json"
+#define path "/home/lacie/Github/IoT-App/IoT-Dashboard/data/mongodb.json"
 
 struct QNodeData{
     QString database;
