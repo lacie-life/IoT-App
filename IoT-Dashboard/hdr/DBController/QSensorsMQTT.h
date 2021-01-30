@@ -3,6 +3,15 @@
 
 #include <QObject>
 #include <QVector>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QJsonArray>
+#include <QDebug>
+#include <QFile>
+
+
+#define device_path "/home/lacie/Github/IoT-App/IoT-Dashboard/data/devices.json"
+#define broker_path "/home/lacie/Github/IoT-App/IoT-Dashboard/data/broker.json"
 
 struct SensorNode{
     QString topic_data;
@@ -20,6 +29,8 @@ public:
 
     int initBrokerHost();
     int loadSensorsParamenters(int index = 0);
+    void publish(SensorNode node, QString mess);
+    void subcrib(SensorNode node);
 
     QVector<QString> brokerHosts;
     QVector<SensorNode> sensorsNode;
