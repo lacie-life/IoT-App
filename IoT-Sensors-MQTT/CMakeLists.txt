@@ -29,6 +29,8 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick Mqtt REQUIRED)
 
 set(PROJECT_SOURCES
         main.cpp
+        SensorsMQTT.h
+        SensorsMQTT.cpp
         qml.qrc
 )
 

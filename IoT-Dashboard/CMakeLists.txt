@@ -35,17 +35,17 @@ find_package(nlohmann_json 3.2.0 REQUIRED)
 set(PROJECT_SOURCES
         src/main.cpp
         src/DBController/QMongoDB.cpp
+        src/DBController/SensorsMQTT.cpp
         src/AppEngine.cpp
         src/Model/Constants_Def.cpp
         src/Plugin/QCircleMeter.cpp
-        src/Plugin/SensorsMQTT.cpp
         src/Plugin/QChartDB.cpp
         hdr/AppEngine.h
         hdr/DBController/QMongoDB.h
+        hdr/DBController/SensorsMQTT.h
         hdr/Model/Constants_Def.h
         hdr/View/Screen_Def.h
         hdr/Plugin/QCircleMeter.h
-        hdr/Plugin/SensorsMQTT.h
         hdr/Plugin/QChartDB.h
         qml.qrc
 )
