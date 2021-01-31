@@ -9,8 +9,11 @@
 #include <QDebug>
 #include <QFile>
 
+<<<<<<< HEAD
 #include <QMqttClient>
 
+=======
+>>>>>>> main
 
 #define device_path "/home/lacie/Github/IoT-App/IoT-Dashboard/data/devices.json"
 #define broker_path "/home/lacie/Github/IoT-App/IoT-Dashboard/data/broker.json"
