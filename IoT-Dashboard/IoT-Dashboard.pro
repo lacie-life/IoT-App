@@ -19,16 +19,21 @@ HEADERS += \
     $$HEADER_PATH/AppEngine.h \
     $$HEADER_PATH/Model/Constants_Def.h \
     $$HEADER_PATH/Plugin/QCircleMeter.h \
-    $$HEADER_PATH/Plugin/SensorsMQTT.h \
-    $$HEADER_PATH/DBController/QMongoDB.h
+#    $$HEADER_PATH/Plugin/SensorsMQTT.h \
+#    $$HEADER_PATH/DBController/QMongoDB.h
+    $$HEADER_PATH/Plugin/QChart.h \
+    $$HEADER_PATH/Model/EasingFunction.h \
+    $$HEADER_PATH/Model/QChart_Enums.h
 
 SOURCES += \
-        $$SOURCE_PATH/AppEngine.cpp \
-        $$SOURCE_PATH/Model/Constants_Def.cpp \
-        $$SOURCE_PATH/Plugin/QCircleMeter.cpp \
-        $$SOURCE_PATH/Plugin/SensorsMQTT.cpp \
-        $$SOURCE_PATH/main.cpp \
-        $$SOURCE_PATH/DBController/QMongoDB.cpp
+    $$SOURCE_PATH/AppEngine.cpp \
+    $$SOURCE_PATH/Model/Constants_Def.cpp \
+    $$SOURCE_PATH/Plugin/QCircleMeter.cpp \
+#    $$SOURCE_PATH/Plugin/SensorsMQTT.cpp \
+#    $$SOURCE_PATH/DBController/QMongoDB.cpp
+    $$SOURCE_PATH/main.cpp \
+    $$SOURCE_PATH/Plugin/QChart.cpp \
+    $$SOURCE_PATH/Model/EasingFunction.cpp
 
 RESOURCES += qml.qrc
 
