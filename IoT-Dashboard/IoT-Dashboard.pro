@@ -13,7 +13,8 @@ INCLUDEPATH += \
     $$HEADER_PATH \
     $$HEADER_PATH/Model \
     $$HEADER_PATH/Plugin \
-    $$HEADER_PATH/DBController
+    $$HEADER_PATH/DBController \
+    $$HEADER_PATH/View
 
 HEADERS += \
     $$HEADER_PATH/AppEngine.h \
@@ -23,7 +24,8 @@ HEADERS += \
 #    $$HEADER_PATH/DBController/QMongoDB.h
     $$HEADER_PATH/Plugin/QChart.h \
     $$HEADER_PATH/Model/EasingFunction.h \
-    $$HEADER_PATH/Model/QChart_Enums.h
+    $$HEADER_PATH/Model/QChart_Enums.h \
+    $$HEADER_PATH/View/Screen_Def.h
 
 SOURCES += \
     $$SOURCE_PATH/AppEngine.cpp \

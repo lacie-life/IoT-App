@@ -106,10 +106,9 @@ public slots:
     void setYMax(qreal yMax);
     void setYMin(qreal yMin);
 
-    void appendToList(qreal x, qreal y);
-    void appendData(qreal data);
-
     void setEasingType(int easingType);
+
+    void appendData(qreal data);
 
 signals:
     void xAxisChanged(QString xAxis);
@@ -136,6 +135,7 @@ signals:
     void easingTypeChanged(int easingType);
 
 private:
+    void appendToList(qreal x, qreal y);
     Dot dataToChart(const Dot& _other, qreal distance, int index);
     Dot dataToChart(qreal x, qreal y, qreal distance, int index);
     qreal mapData(qreal y);

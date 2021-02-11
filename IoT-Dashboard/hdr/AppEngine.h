@@ -4,9 +4,11 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "Model/Constants_Def.h"
-#include "View/Screen_Def.h"
-#include "Plugin/QCircleMeter.h"
+#include "Constants_Def.h"
+#include "Screen_Def.h"
+#include "QCircleMeter.h"
+#include "QChart.h"
+#include "QChart_Enums.h"
 
 class AppEngine : public QObject
 {

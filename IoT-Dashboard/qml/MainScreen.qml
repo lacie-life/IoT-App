@@ -1,33 +1,31 @@
 import QtQuick 2.0
 import "Component"
+import QmlCustomItem 1.0
 
 Item
 {
     id: root
-    property int sData: button.isActive ? 40 : 10
 
-    QSensorClock
+    QChartRealTime
     {
-        id: clock
-        anchors.centerIn: parent
-        dataUpdate: sData
-        updateInterval: 2
-
-        thickness: 30
+        id: chart
+        width: 400
+        height: 350
+        xGrid: 12
+        yGrid: 10
+        grid: ENUMS.Grid
+        easing: ENUMS.InOutSine
     }
 
-    QSwitchButton
-    {
-        id: button
-        anchors
-        {
-            horizontalCenter: clock.horizontalCenter
-            top: clock.bottom
-            topMargin: 50
+    Timer {
+        id: timer
+        interval: 1000
+        triggeredOnStart: true
+        repeat: true
+        running: true
+        onTriggered: {
+            chart.addData(Math.random() * (100 - 0) + 0)
         }
-
-        width: 50
-        height: 25
     }
 
 }

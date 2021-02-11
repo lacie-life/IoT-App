@@ -9,6 +9,6 @@
         <file>qml/MainScreen.qml</file>
         <file>qml/Component/Common/QTimer.qml</file>
         <file>qml/Component/QSensorClock.qml</file>
-        <file>qml/Component/QChart.qml</file>
+        <file>qml/Component/QChartRealTime.qml</file>
     </qresource>
 </RCC>

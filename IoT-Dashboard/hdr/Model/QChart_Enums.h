@@ -21,44 +21,44 @@ public:
         Linear = 0,
 
         InOutSine,      // 1
-        OutSine,
-        InSine,
+//        OutSine,
+//        InSine,
 
-        InOutBack,      // 4
-        OutBack,
-        InBack,
+//        InOutBack,      // 4
+//        OutBack,
+//        InBack,
 
-        InOutQuad,      // 7
-        OutQuad,
-        InQuad,
+//        InOutQuad,      // 7
+//        OutQuad,
+//        InQuad,
 
-        InOutCirc,      // 10
-        OutCirc,
-        InCirc,
+//        InOutCirc,      // 10
+//        OutCirc,
+//        InCirc,
 
-        InOutExpo,      // 13
-        OutExpo,
-        InExpo,
+//        InOutExpo,      // 13
+//        OutExpo,
+//        InExpo,
 
-        InOutElastic,   // 16
-        OutElastic,
-        InElastic,
+//        InOutElastic,   // 16
+//        OutElastic,
+//        InElastic,
 
-        InOutCubic,     // 19
-        OutCubic,
-        InCubic,
+//        InOutCubic,     // 19
+//        OutCubic,
+//        InCubic,
 
-        InOutQuint,     // 22
-        OutQuint,
-        InQuint,
+//        InOutQuint,     // 22
+//        OutQuint,
+//        InQuint,
 
-        InOutQuart,     // 25
-        OutQuart,
-        InQuart,
+//        InOutQuart,     // 25
+//        OutQuart,
+//        InQuart,
 
-        InOutBounce,    // 28
-        OutBounce,
-        InBounce,
+//        InOutBounce,    // 28
+//        OutBounce,
+//        InBounce,
     };
 };
 
