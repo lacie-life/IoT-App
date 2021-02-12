@@ -78,7 +78,7 @@ void QChart::paint(QPainter *painter)
                 && (static_cast<int>(QChart_Enums::YGrid) == m_gridMode
                     || static_cast<int>(QChart_Enums::Grid) == m_gridMode)) // draw yGrid
         {
-            qreal distance = (boundingRect().height() - 20) / m_yAxisDiv;
+            qreal distance = (boundingRect().height() - 10) / m_yAxisDiv;
             for (int i = 1; i <= m_yAxisDiv; i++)
             {
                 painter->drawLine(boundingRect().x()

@@ -5,20 +5,17 @@ import "Common"
 Item
 {
     id: root
-    property int dataUpdate: 0
-    property int updateInterval: 5
 
     property int textSize: 25
     property bool textBold: false
     property string textColor: "#000000"
     property bool textVisible: true
 
-    property alias unfilledColor: chartID.unfilledColor
-    property alias filledColor: chartID.fillColor
-    property alias bottomColor: chartID.bottomColor
-    property alias centerColor: chartID.centerColor
-
-    property int thickness: 25
+    property alias unfilledColor    : chartID.unfilledColor
+    property alias filledColor      : chartID.fillColor
+    property alias staticBarColor   : chartID.bottomColor
+    property alias bgColor          : chartID.centerColor
+    property alias ringSize         : chartID.thickness
 
     width: 200
     height: 200
@@ -33,14 +30,10 @@ Item
         height: root.height
         anchors.centerIn: parent
 
-        thickness: root.thickness
-
         data: 0
-        Behavior on data
-        {
+        Behavior on data {
             // duration is scaled from 100ms to 300ms
-            NumberAnimation
-            {
+            NumberAnimation {
                 duration: chartID.diffData <  0  ?   0 :
                           chartID.diffData <= 10 ? 150 :
                           chartID.diffData <= 20 ? 200 :
@@ -49,16 +42,14 @@ Item
                           350
                 easing.type: Easing.OutQuad
                 alwaysRunToEnd: true
-                onStopped:
-                {
+                onStopped: {
                     chartID.diffData = 0
                 }
             }
         }
     }
 
-    QText
-    {
+    QText {
         id: text
         visible: root.textVisible
 
@@ -69,27 +60,21 @@ Item
         color: root.textColor
     }
 
-    QTimer
-    {
+    QTimer {
         id: updateDataTimer
         interval: root.updateInterval * 1000
         repeat: true
-        onTriggered:
-        {
-            if (root.dataUpdate !== chartID.data)
-            {
+        onTriggered: {
+            if (root.dataUpdate !== chartID.data) {
                 chartID.diffData = Math.abs(root.dataUpdate - chartID.data)
                 chartID.data = root.dataUpdate
             }
         }
     }
 
-    Component.onCompleted:
-    {
-        if (root.dataUpdate !== 0)
-        {
-            chartID.data = root.dataUpdate
-        }
-        updateDataTimer.start()
+    function updateData(newData) {
+        chartID.diffData = Math.abs(newData - chartID.data)
+        chartID.data = newData
     }
+
 }

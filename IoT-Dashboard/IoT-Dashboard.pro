@@ -29,7 +29,6 @@ HEADERS += \
 
 SOURCES += \
     $$SOURCE_PATH/AppEngine.cpp \
-    $$SOURCE_PATH/Model/Constants_Def.cpp \
     $$SOURCE_PATH/Plugin/QCircleMeter.cpp \
 #    $$SOURCE_PATH/Plugin/SensorsMQTT.cpp \
 #    $$SOURCE_PATH/DBController/QMongoDB.cpp

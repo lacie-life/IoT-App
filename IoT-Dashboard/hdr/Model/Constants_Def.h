@@ -19,14 +19,11 @@
 #endif
 
 #define DEFS Constants_Def::instance()
+#define DELETE_DEFS Constants_Def::DestroyInstance()
 
 class Constants_Def : public QObject
 {
     Q_OBJECT
-
-    explicit Constants_Def(QObject* parent = nullptr);
-    Constants_Def(Constants_Def &_Other) = delete;
-    bool operator= (Constants_Def &_Other) = delete ;
 
     static Constants_Def* m_instance;
     static QMutex m_lock;
@@ -35,11 +32,38 @@ signals:
     void dataUpdated();
 
 public:
-    static Constants_Def* instance();
-    ~Constants_Def();
+    static Constants_Def* instance()
+    {
+        m_lock.lock();
+        if (nullptr == m_instance)
+        {
+            m_instance = new Constants_Def();
+        }
+        m_lock.unlock();
+        return m_instance;
+    }
+
+    static void DestroyInstance()
+    {
+        m_lock.lock();
+        if (nullptr != m_instance)
+        {
+            delete m_instance;
+        }
+        m_instance = nullptr;
+        m_lock.unlock();
+    }
+
+private:
+    explicit Constants_Def(QObject* parent = nullptr)
+        : QObject{ parent }
+    { }
+    ~Constants_Def() {}
+    Constants_Def(const Constants_Def&) = delete;
+    bool operator= (const Constants_Def&) = delete ;
+
 
     // define property
-private:
     // general
     DEF_CONST(int, MAX_WIDTH, 640)
     DEF_CONST(int, MAX_HEIGHT, 480)

@@ -4,11 +4,6 @@
 #include <QObject>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include "Constants_Def.h"
-#include "Screen_Def.h"
-#include "QCircleMeter.h"
-#include "QChart.h"
-#include "QChart_Enums.h"
 
 class AppEngine : public QObject
 {
@@ -17,8 +12,11 @@ class AppEngine : public QObject
     QQmlApplicationEngine m_engine;
 public:
     explicit AppEngine(QObject *parent = nullptr);
+    ~AppEngine();
+
     void prepareApplication();
     void runApplication();
+
 
 signals:
 

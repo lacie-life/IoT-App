@@ -10,5 +10,6 @@
         <file>qml/Component/Common/QTimer.qml</file>
         <file>qml/Component/QSensorClock.qml</file>
         <file>qml/Component/QChartRealTime.qml</file>
+        <file>qml/Screen/HomeScreen.qml</file>
     </qresource>
 </RCC>
