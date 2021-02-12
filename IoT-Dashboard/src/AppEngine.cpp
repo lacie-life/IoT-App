@@ -15,7 +15,7 @@ void AppEngine::prepareApplication()
     qmlRegisterUncreatableType<QChart_Enums>("QmlCustomItem", 1, 0, "ENUMS", "Uncreatable");
 
     // set context properties
-    m_context->setContextProperty("CONST", CONST_MODEL);
+    m_context->setContextProperty("CONST", DEFS);
 
 
 }

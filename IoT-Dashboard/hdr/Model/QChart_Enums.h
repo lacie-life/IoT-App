@@ -13,6 +13,8 @@ public:
     enum Chart
     {
         NoGrid = 0,
+        XGrid,
+        YGrid,
         Grid,
     };
 

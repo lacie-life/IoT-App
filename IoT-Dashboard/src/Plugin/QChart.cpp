@@ -1,4 +1,5 @@
 #include "QChart.h"
+#include "Constants_Def.h"
 #include <QDebug>
 #include <QtMath>
 #include <QPainterPath>
@@ -54,22 +55,28 @@ void QChart::paint(QPainter *painter)
                       , boundingRect().y() + boundingRect().height());      // xAxis
 
     // Draw grid if needed
-    if (static_cast<int>(QChart_Enums::Grid) == m_gridMode)
+    if (static_cast<int>(QChart_Enums::Grid) == m_gridMode
+            || static_cast<int>(QChart_Enums::XGrid) == m_gridMode
+            || static_cast<int>(QChart_Enums::YGrid) == m_gridMode)
     {
         painter->setPen(QPen(brushAxis, 1));
-        painter->setOpacity(0.7);
-        if (m_xAxisDiv > 1 && boundingRect().width() > 50) // draw xGrid
+        painter->setOpacity(0.5);
+        if ( (m_xAxisDiv > 1 && boundingRect().width() > 50)
+                && (static_cast<int>(QChart_Enums::XGrid) == m_gridMode
+                    || static_cast<int>(QChart_Enums::Grid) == m_gridMode)) // draw xGrid
         {
-            qreal distance = (boundingRect().width() - 20) / m_xAxisDiv;
-            for (int i = 1; i <= m_xAxisDiv; i++)
+            qreal distance = (boundingRect().width() - 20) / (m_xAxisDiv);
+            for (int i = 0; i <= m_xAxisDiv; i++)
             {
-                painter->drawLine(boundingRect().x() + distance * i
+                painter->drawLine(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
                                   , boundingRect().y() + boundingRect().height()
-                                  , boundingRect().x() + distance * i
+                                  , boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
                                   , boundingRect().y());                        //draw xAxis
             }
         }
-        if (m_yAxis > 1 && boundingRect().height() > 50) // draw yGrid
+        if ((m_yAxis > 1 && boundingRect().height() > 50)
+                && (static_cast<int>(QChart_Enums::YGrid) == m_gridMode
+                    || static_cast<int>(QChart_Enums::Grid) == m_gridMode)) // draw yGrid
         {
             qreal distance = (boundingRect().height() - 20) / m_yAxisDiv;
             for (int i = 1; i <= m_yAxisDiv; i++)
@@ -89,17 +96,6 @@ void QChart::paint(QPainter *painter)
     if (m_listData.count() > 0)                             // if there are more than or at least one point, then draw it
     {
         qreal distance = (boundingRect().width() - 20) / m_xAxisDiv;
-//        if (m_listData.count() > 1)                         // if there are more than or at least two points, then draw line
-//        {
-//            painter->setPen(QPen(brushLine, m_lineThickness));
-//            for (int i = 0; i < m_listData.count() - 1; i++)
-//            {
-//                painter->drawLine(boundingRect().x() + distance * i
-//                                  , m_mappedList[i]
-//                                  , boundingRect().x() + distance * (i + 1)
-//                                  , m_mappedList[i + 1]);                               // draw line
-//            }                                 // ============>   OLD STYLE LINE BUT STABLE, UNCOMMENT IF NEEDED
-//        }
 
         if (m_listData.count() > 1)                         // if there are more than or at least two points, then draw line
         {
@@ -108,8 +104,10 @@ void QChart::paint(QPainter *painter)
             {
                 drawEasingPath(painter
                                , m_easingType
-                               , QPointF(boundingRect().x() + distance * i, m_mappedList[i])
-                               , QPointF(boundingRect().x() + distance * (i + 1), m_mappedList[i + 1])
+                               , QPointF(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+                                         , m_mappedList[i])
+                               , QPointF(boundingRect().x() + distance * (i + 1) + DEFS->DRAW_OFFSET()
+                                         , m_mappedList[i + 1])
                                , distance
                                , 100);
             }
@@ -119,7 +117,8 @@ void QChart::paint(QPainter *painter)
         painter->setPen(Qt::NoPen);
         for (int i = 0; i < m_listData.count(); i++)
         {
-            painter->drawEllipse(QPointF(boundingRect().x() + distance * i, m_mappedList[i])
+            painter->drawEllipse(QPointF(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+                                         , m_mappedList[i])
                                  , m_dotThickness
                                  , m_dotThickness);                                     // draw dot
         }
@@ -136,11 +135,6 @@ void QChart::drawEasingPath(QPainter *painter
     if (sample < 50) sample = 50;
     switch (easingType)
     {
-    case static_cast<int>(QChart_Enums::Linear):
-    {
-        painter->drawLine(p1, p2);
-    }
-        break;
     case static_cast<int>(QChart_Enums::InOutSine):
     {
         QPointF xp1, xp2;
@@ -159,6 +153,7 @@ void QChart::drawEasingPath(QPainter *painter
         }
     }
         break;
+    case static_cast<int>(QChart_Enums::Linear):    // fall through default case
     default:
     {
         painter->drawLine(p1, p2);

@@ -10,24 +10,15 @@
 #ifndef MACRO_DEFINE
 #define MACRO_DEFINE
 
-#define DEF_STRING(name, value) Q_PROPERTY(QString name READ name NOTIFY dataUpdated) \
-    public: QString name() const { return value; }
+#define DEF_VAR(type, name, value) Q_PROPERTY(type name READ name NOTIFY dataUpdate) \
+    public: type name() { return value; }
 
-#define DEF_INT(name, value) Q_PROPERTY(int name READ name CONSTANT) \
-    public: int name() const { return value; }
-
-#define DEF_FLOAT(name, value) Q_PROPERTY(double name READ name CONSTANT) \
-    public: double name() const { return value; }
-
-#define DEF_BOOL(name, value) Q_PROPERTY(bool name READ name CONSTANT) \
-    public: bool name() const { return value; }
-
-#define DEF_TYPE(type, name, value) Q_PROPERTY(type name READ name CONSTANT) \
+#define DEF_CONST(type, name, value) Q_PROPERTY(type name READ name CONSTANT) \
     public: type name() const { return value; }
 
 #endif
 
-#define CONST_MODEL Constants_Def::instance()
+#define DEFS Constants_Def::instance()
 
 class Constants_Def : public QObject
 {
@@ -50,13 +41,16 @@ public:
     // define property
 private:
     // general
-    DEF_INT(MAX_WIDTH, 640)
-    DEF_INT(MAX_HEIGHT, 480)
+    DEF_CONST(int, MAX_WIDTH, 640)
+    DEF_CONST(int, MAX_HEIGHT, 480)
 
     // constant color
-    DEF_TYPE(QColor, SWITCH_OFF_COLOR, "#ADADAD")
-    DEF_TYPE(QColor, SWITCH_ON_COLOR, "#00CCD9")
-    DEF_TYPE(QColor, SWITCH_BTN_NOOD, "#F0F0F0")
+    DEF_CONST(QColor, SWITCH_OFF_COLOR, "#ADADAD")
+    DEF_CONST(QColor, SWITCH_ON_COLOR, "#00CCD9")
+    DEF_CONST(QColor, SWITCH_BTN_NOOD, "#F0F0F0")
+
+    // QChart define
+    DEF_CONST(int, DRAW_OFFSET, 10)
 };
 
 #endif // CONSTANT_DEF_H

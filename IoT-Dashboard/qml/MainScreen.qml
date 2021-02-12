@@ -13,8 +13,10 @@ Item
         height: 350
         xGrid: 12
         yGrid: 10
+        lineColor: "blue"
         grid: ENUMS.Grid
-        easing: ENUMS.InOutSine
+        easing: ENUMS.Linear
+        dotSize: 4
     }
 
     Timer {
@@ -27,5 +29,6 @@ Item
             chart.addData(Math.random() * (100 - 0) + 0)
         }
     }
+
 
 }
