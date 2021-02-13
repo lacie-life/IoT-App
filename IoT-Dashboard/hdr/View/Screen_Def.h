@@ -55,6 +55,11 @@ private:
     // define screen goes here
     DEF_SCREEN(QML_MAIN_APP, "qrc:/qml/main.qml")
     DEF_SCREEN(QML_MAIN_SCREEN, "qrc:/qml/MainScreen.qml")
+    DEF_SCREEN(QML_TEST, "qrc:/qml/TestScreen.qml")
+
+    // detail screen
+    DEF_SCREEN(QML_HOME, "qrc:/qml/Screen/HomeScreen.qml")
+    DEF_SCREEN(QML_SEARCH, "qrc:/qml/Screen/SearchScreen.qml")
 };
 
 #endif // SCREEN_DEF_H

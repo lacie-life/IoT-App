@@ -65,13 +65,17 @@ private:
 
     // define property
     // general
-    DEF_CONST(int, MAX_WIDTH, 640)
-    DEF_CONST(int, MAX_HEIGHT, 480)
+    DEF_CONST(int, MAX_WIDTH, 1280)
+    DEF_CONST(int, MAX_HEIGHT, 680)
+    DEF_CONST(int, MENU_BAR_WIDTH, 80)
 
     // constant color
     DEF_CONST(QColor, SWITCH_OFF_COLOR, "#ADADAD")
     DEF_CONST(QColor, SWITCH_ON_COLOR, "#00CCD9")
     DEF_CONST(QColor, SWITCH_BTN_NOOD, "#F0F0F0")
+
+    DEF_CONST(QColor, MENU_BAR_COLOR, "#00AF2A")
+    DEF_CONST(QColor, MENU_BAR_FOCUS_COLOR, "#33FF64")
 
     // QChart define
     DEF_CONST(int, DRAW_OFFSET, 10)
