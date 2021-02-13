@@ -7,9 +7,10 @@ QRectangle
     // properties
     property string sourceImage: ""
     property string label: ""
-    property bool allowHover: true
+    property bool allowHover: false
     property bool allowText: false
     property bool allowImage: false
+    property int sizeImage: 0
 
     // signals declare
 
@@ -23,12 +24,14 @@ QRectangle
     // main
     width: 100
     height: 100
-    color: "transparent"
+    color: CONST.INVISIBLE
 
     QImage
     {
         id: imageID
-        anchors.fill: parent
+        width: root.sizeImage
+        height: width
+        anchors.centerIn: root
         source: root.sourceImage
         visible: (root.sourceImage !== "" && allowImage)
     }

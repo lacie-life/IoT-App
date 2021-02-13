@@ -9,7 +9,7 @@
 #include <QPen>
 #include <QList>
 #include <QPainterPath>
-#include "QChart_Enums.h"
+#include "AppEnums.h"
 #include "EasingFunction.h"
 
 #define DEFAULT_BG_COLOR        "#E9FFF6"

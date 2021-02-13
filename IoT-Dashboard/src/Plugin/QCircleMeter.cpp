@@ -6,6 +6,8 @@ QCircleMeter::QCircleMeter(QQuickItem *parent)
     , m_filledColor { DEFAULT_FILLED_COLOR }
     , m_bottomColor { DEFAULT_BOTTOM_COLOR }
     , m_centerColor { DEFAULT_CENTER_COLOR }
+    , m_border { false }
+    , m_borderColor { "#000000" }
     , m_thickness{ 20 }
     , m_data { 0 }
 {
@@ -24,6 +26,7 @@ void QCircleMeter::paint(QPainter *painter)
     painter->setRenderHints(QPainter::Antialiasing, true);
 
     // Draw the first layer of object
+
     painter->setBrush(unfilled);
     painter->drawEllipse(boundingRect().REDUCE_SIZE(1));
 
@@ -67,6 +70,16 @@ QColor QCircleMeter::filledColor() const
 int QCircleMeter::data() const
 {
     return m_data;
+}
+
+bool QCircleMeter::border() const
+{
+    return m_border;
+}
+
+QColor QCircleMeter::borderColor() const
+{
+    return m_borderColor;
 }
 
 int QCircleMeter::thickness() const
@@ -121,6 +134,24 @@ void QCircleMeter::setData(int data)
     m_data = data;
     update();
     emit dataChanged(m_data);
+}
+
+void QCircleMeter::setBorder(bool border)
+{
+    if (m_border == border)
+        return;
+
+    m_border = border;
+    emit borderChanged(m_border);
+}
+
+void QCircleMeter::setBorderColor(QColor borderColor)
+{
+    if (m_borderColor == borderColor)
+        return;
+
+    m_borderColor = borderColor;
+    emit borderColorChanged(m_borderColor);
 }
 
 void QCircleMeter::setThickness(int thickness)

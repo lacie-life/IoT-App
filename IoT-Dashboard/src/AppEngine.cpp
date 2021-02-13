@@ -3,7 +3,7 @@
 #include "Screen_Def.h"
 #include "QCircleMeter.h"
 #include "QChart.h"
-#include "QChart_Enums.h"
+#include "AppEnums.h"
 
 ScreenDef* ScreenDef::m_instance = nullptr;
 QMutex ScreenDef::m_lock;
@@ -29,7 +29,7 @@ void AppEngine::prepareApplication()
     // register class
     qmlRegisterType<QCircleMeter>("QmlCustomItem", 1, 0, "QCircleMeter");
     qmlRegisterType<QChart>("QmlCustomItem", 1, 0, "QChart");
-    qmlRegisterUncreatableType<QChart_Enums>("QmlCustomItem", 1, 0, "ENUMS", "Uncreatable");
+    qmlRegisterUncreatableType<AppEnums>("QmlCustomItem", 1, 0, "ENUMS", "Uncreatable");
 
     // set context properties
     m_context->setContextProperty("CONST", DEFS);

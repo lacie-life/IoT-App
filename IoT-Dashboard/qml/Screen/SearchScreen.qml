@@ -2,7 +2,7 @@ import QtQuick 2.0
 import "../Component"
 import "../Component/Common"
 
-Item {
+QRectangle {
     id: root
 
 }

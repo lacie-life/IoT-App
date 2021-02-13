@@ -15,7 +15,7 @@ QChart::QChart(QQuickItem *parent)
     , m_dotThickness{6}
     , m_xAxisDiv{5}
     , m_yAxisDiv{5}
-    , m_gridMode{QChart_Enums::NoGrid}
+    , m_gridMode{AppEnums::NoGrid}
     , m_backgroundColor{DEFAULT_BG_COLOR}
     , m_dotColor{DEFAULT_DOT_COLOR}
     , m_axisColor{DEFAULT_AXIS_COLOR}
@@ -24,7 +24,7 @@ QChart::QChart(QQuickItem *parent)
     , m_xMin{0}
     , m_yMax{100}
     , m_yMin{0}
-    , m_easingType{QChart_Enums::Linear}
+    , m_easingType{AppEnums::Linear}
 
 {
 }
@@ -55,15 +55,15 @@ void QChart::paint(QPainter *painter)
                       , boundingRect().y() + boundingRect().height());      // xAxis
 
     // Draw grid if needed
-    if (static_cast<int>(QChart_Enums::Grid) == m_gridMode
-            || static_cast<int>(QChart_Enums::XGrid) == m_gridMode
-            || static_cast<int>(QChart_Enums::YGrid) == m_gridMode)
+    if (static_cast<int>(AppEnums::Grid) == m_gridMode
+            || static_cast<int>(AppEnums::XGrid) == m_gridMode
+            || static_cast<int>(AppEnums::YGrid) == m_gridMode)
     {
         painter->setPen(QPen(brushAxis, 1));
         painter->setOpacity(0.5);
         if ( (m_xAxisDiv > 1 && boundingRect().width() > 50)
-                && (static_cast<int>(QChart_Enums::XGrid) == m_gridMode
-                    || static_cast<int>(QChart_Enums::Grid) == m_gridMode)) // draw xGrid
+                && (static_cast<int>(AppEnums::XGrid) == m_gridMode
+                    || static_cast<int>(AppEnums::Grid) == m_gridMode)) // draw xGrid
         {
             qreal distance = (boundingRect().width() - 20) / (m_xAxisDiv);
             for (int i = 0; i <= m_xAxisDiv; i++)
@@ -75,8 +75,8 @@ void QChart::paint(QPainter *painter)
             }
         }
         if ((m_yAxis > 1 && boundingRect().height() > 50)
-                && (static_cast<int>(QChart_Enums::YGrid) == m_gridMode
-                    || static_cast<int>(QChart_Enums::Grid) == m_gridMode)) // draw yGrid
+                && (static_cast<int>(AppEnums::YGrid) == m_gridMode
+                    || static_cast<int>(AppEnums::Grid) == m_gridMode)) // draw yGrid
         {
             qreal distance = (boundingRect().height() - 10) / m_yAxisDiv;
             for (int i = 1; i <= m_yAxisDiv; i++)
@@ -135,7 +135,7 @@ void QChart::drawEasingPath(QPainter *painter
     if (sample < 50) sample = 50;
     switch (easingType)
     {
-    case static_cast<int>(QChart_Enums::InOutSine):
+    case static_cast<int>(AppEnums::InOutSine):
     {
         QPointF xp1, xp2;
         qreal dy = p2.y() - p1.y();
@@ -153,7 +153,7 @@ void QChart::drawEasingPath(QPainter *painter
         }
     }
         break;
-    case static_cast<int>(QChart_Enums::Linear):    // fall through default case
+    case static_cast<int>(AppEnums::Linear):    // fall through default case
     default:
     {
         painter->drawLine(p1, p2);

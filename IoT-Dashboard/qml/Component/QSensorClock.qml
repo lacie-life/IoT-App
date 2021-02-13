@@ -15,6 +15,9 @@ Item
     property alias filledColor      : chartID.fillColor
     property alias staticBarColor   : chartID.bottomColor
     property alias bgColor          : chartID.centerColor
+    property alias border           : chartID.border
+    property alias borderColor      : chartID.borderColor
+
     property alias ringSize         : chartID.thickness
 
     width: 200

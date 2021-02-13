@@ -12,7 +12,7 @@
         <file>qml/Component/QChartRealTime.qml</file>
         <file>qml/Screen/HomeScreen.qml</file>
         <file>qml/Screen/SearchScreen.qml</file>
-        <file>qml/Component/MenuBar.qml</file>
+        <file>qml/Component/QMenuBar.qml</file>
         <file>qml/TestScreen.qml</file>
     </qresource>
 </RCC>

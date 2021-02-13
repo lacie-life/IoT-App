@@ -24,8 +24,9 @@ HEADERS += \
 #    $$HEADER_PATH/DBController/QMongoDB.h
     $$HEADER_PATH/Plugin/QChart.h \
     $$HEADER_PATH/Model/EasingFunction.h \
-    $$HEADER_PATH/Model/QChart_Enums.h \
-    $$HEADER_PATH/View/Screen_Def.h
+    $$HEADER_PATH/Model/AppEnums.h \
+    $$HEADER_PATH/View/Screen_Def.h \
+    hdr/Model/AppModel.h
 
 SOURCES += \
     $$SOURCE_PATH/AppEngine.cpp \
@@ -34,9 +35,11 @@ SOURCES += \
 #    $$SOURCE_PATH/DBController/QMongoDB.cpp
     $$SOURCE_PATH/main.cpp \
     $$SOURCE_PATH/Plugin/QChart.cpp \
-    $$SOURCE_PATH/Model/EasingFunction.cpp
+    $$SOURCE_PATH/Model/EasingFunction.cpp \
+    src/Model/AppModel.cpp
 
-RESOURCES += qml.qrc
+RESOURCES += qml.qrc \
+    images.qrc
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
