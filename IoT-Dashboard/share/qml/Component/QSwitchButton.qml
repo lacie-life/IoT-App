@@ -20,7 +20,7 @@ QButton
     width: 100
     height: 50
     radius: (height < width) ? (height / 2) : (width / 2)
-    color: isActive ? CONST.SWITCH_ON_COLOR : CONST.SWITCH_OFF_COLOR
+    color: isActive ? CONST.COLOR_SWITCH_ON : CONST.COLOR_SWITCH_OFF
 
     QRec
     {
@@ -36,7 +36,7 @@ QButton
             left: root.left
             leftMargin: root.noodPosLeft
         }
-        color: CONST.SWITCH_BTN_NOOD
+        color: CONST.COLOR_SWITCH_BTN_NOOD
     }
 
     PropertyAnimation

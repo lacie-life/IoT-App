@@ -94,18 +94,18 @@ private:
     DEF_CONST(int, INPUT_BOX_TOP_MARGIN , 20    )
 
     // constant color
-    DEF_CONST(QColor, SWITCH_OFF_COLOR, "#ADADAD")
-    DEF_CONST(QColor, SWITCH_ON_COLOR , "#00CCD9")
-    DEF_CONST(QColor, SWITCH_BTN_NOOD , "#F0F0F0")
+    DEF_CONST(QColor, COLOR_SWITCH_OFF, "#ADADAD")
+    DEF_CONST(QColor, COLOR_SWITCH_ON , "#00CCD9")
+    DEF_CONST(QColor, COLOR_SWITCH_BTN_NOOD , "#F0F0F0")
 
-    DEF_CONST(QColor, MENU_BAR_COLOR        , "#00AF2A")
-    DEF_CONST(QColor, MENU_BAR_FOCUS_COLOR  , "#DDDDDD")
-    DEF_CONST(QColor, BACK_GROUND_COLOR     , MENU_BAR_FOCUS_COLOR())
+    DEF_CONST(QColor, COLOR_MENU_BAR        , "#00AF2A")
+    DEF_CONST(QColor, COLOR_MENU_BAR_FOCUS  , "#DDDDDD")
+    DEF_CONST(QColor, COLOR_BACK_GROUND     , COLOR_MENU_BAR_FOCUS())
 
-    DEF_CONST(QString, INVISIBLE       , "transparent")
+    DEF_CONST(QString, COLOR_INVISIBLE       , "transparent")
 
     // QChart define
-    DEF_CONST(int, DRAW_OFFSET, 10)
+    DEF_CONST(int, CHART_DRAW_OFFSET, 10)
 };
 
 #endif // CONSTANT_DEF_H

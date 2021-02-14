@@ -5,7 +5,7 @@ import QmlCustomItem 1.0
 
 QRec {
     id: root
-    color: CONST.BACK_GROUND_COLOR
+    color: CONST.COLOR_BACK_GROUND
 
     QChartRealTime {
         id: chart
@@ -23,7 +23,7 @@ QRec {
         easing: ENUMS.InOutSine
         dotSize: 4
 
-        color: CONST.BACK_GROUND_COLOR
+        color: CONST.COLOR_BACK_GROUND
     }
 
     QSensorClock {
@@ -35,7 +35,7 @@ QRec {
         anchors.rightMargin: 100
         border: true
 
-        bgColor: CONST.BACK_GROUND_COLOR
+        bgColor: CONST.COLOR_BACK_GROUND
         ringSize: 35
     }
 

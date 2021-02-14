@@ -6,6 +6,8 @@
 #include <QMutex>
 #include <QDebug>
 #include <QCoreApplication>
+#include <QHash>
+#include "AppEnums.h"
 
 #ifndef SCREEN_DEF_MACROS
 #define SCREEN_DEF_MACROS
@@ -15,13 +17,13 @@
 
 #endif
 
-#define SCR_DEF ScreenDef::getInstance()
-#define DELETE_SCR_DEF ScreenDef::DestroyInstance()
-
 #ifndef BUILD_DIR
 #define BUILD_DIR QCoreApplication::applicationDirPath()
 
 #endif
+
+#define SCR_DEF ScreenDef::getInstance()
+#define DELETE_SCR_DEF ScreenDef::DestroyInstance()
 
 class ScreenDef : public QObject
 {
@@ -61,7 +63,7 @@ private:
     // define screen goes here
 
     DEF_SCREEN(QML_FOLDER       , "file:" + BUILD_DIR + "/share/qml/")
-    DEF_SCREEN(QML_MAIN_APP     , QML_FOLDER() + "main.qml")
+    DEF_SCREEN(QML_APP     , QML_FOLDER() + "main.qml")
     DEF_SCREEN(QML_MAIN_SCREEN  , QML_FOLDER() + "MainScreen.qml")
     DEF_SCREEN(QML_TEST         , QML_FOLDER() + "TestScreen.qml")
 
@@ -69,5 +71,7 @@ private:
     DEF_SCREEN(QML_HOME         , QML_FOLDER() + "Screen/Home/HomeScreen.qml")
     DEF_SCREEN(QML_SEARCH       , QML_FOLDER() + "Screen/Search/SearchScreen.qml")
 };
+
+
 
 #endif // SCREEN_DEF_H

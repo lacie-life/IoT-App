@@ -68,9 +68,9 @@ void QChart::paint(QPainter *painter)
             qreal distance = (boundingRect().width() - 20) / (m_xAxisDiv);
             for (int i = 0; i <= m_xAxisDiv; i++)
             {
-                painter->drawLine(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+                painter->drawLine(boundingRect().x() + distance * i + DEFS->CHART_DRAW_OFFSET()
                                   , boundingRect().y() + boundingRect().height()
-                                  , boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+                                  , boundingRect().x() + distance * i + DEFS->CHART_DRAW_OFFSET()
                                   , boundingRect().y());                        //draw xAxis
             }
         }
@@ -104,9 +104,9 @@ void QChart::paint(QPainter *painter)
             {
                 drawEasingPath(painter
                                , m_easingType
-                               , QPointF(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+                               , QPointF(boundingRect().x() + distance * i + DEFS->CHART_DRAW_OFFSET()
                                          , m_mappedList[i])
-                               , QPointF(boundingRect().x() + distance * (i + 1) + DEFS->DRAW_OFFSET()
+                               , QPointF(boundingRect().x() + distance * (i + 1) + DEFS->CHART_DRAW_OFFSET()
                                          , m_mappedList[i + 1])
                                , distance
                                , 100);
@@ -117,7 +117,7 @@ void QChart::paint(QPainter *painter)
         painter->setPen(Qt::NoPen);
         for (int i = 0; i < m_listData.count(); i++)
         {
-            painter->drawEllipse(QPointF(boundingRect().x() + distance * i + DEFS->DRAW_OFFSET()
+            painter->drawEllipse(QPointF(boundingRect().x() + distance * i + DEFS->CHART_DRAW_OFFSET()
                                          , m_mappedList[i])
                                  , m_dotThickness
                                  , m_dotThickness);                                     // draw dot

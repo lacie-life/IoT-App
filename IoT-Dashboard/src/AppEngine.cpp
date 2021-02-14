@@ -12,8 +12,10 @@ QMutex Constants_Def::m_lock;
 
 AppEngine::AppEngine(QObject *parent)
     : QObject{ parent }
+    , m_model { new AppModel() }
 {
     m_context = m_engine.rootContext();
+    QQmlEngine::setObjectOwnership(m_model, QQmlEngine::CppOwnership);
 }
 
 AppEngine::~AppEngine()
@@ -35,11 +37,11 @@ void AppEngine::prepareApplication()
     m_context->setContextProperty("CONST", DEFS);
     m_context->setContextProperty("SCREEN", SCR_DEF);
 
+    m_context->setContextProperty("AppModel", m_model);
 
 }
 
 void AppEngine::runApplication()
 {
-    m_engine.load(SCR_DEF->QML_MAIN_APP());
-
+    m_engine.load(SCR_DEF->QML_APP());
 }

@@ -2,17 +2,17 @@
 #define APPENUMS_H
 
 #include <QObject>
-#include <QHash>
 
 class AppEnums : public QObject
 {
     Q_OBJECT
-    Q_ENUMS(Chart)
-    Q_ENUMS(EasingType)
-    Q_ENUMS(ScreenType)
+    Q_ENUMS(E_CHART_t)
+    Q_ENUMS(E_EASING_t)
+    Q_ENUMS(E_SCREEN_t)
+    Q_ENUMS(E_EVENT_t)
 
 public:
-    enum Chart
+    enum E_CHART_t
     {
         NoGrid = 0,
         XGrid,
@@ -20,19 +20,28 @@ public:
         Grid,
     };
 
-    enum EasingType
+    enum E_EASING_t
     {
         Linear = 0,
         InOutSine,
     };
 
-    enum ScreenType
+    enum E_SCREEN_t
     {
         SearchScreen = 0,
         HomeScreen,
         ControlScreen,
         MapScreen,
         UserScreen,
+    };
+
+    enum E_EVENT_t
+    {
+        UserClickSearch = 0,
+        UserClickHome,
+        UserClickControl,
+        UserClickMap,
+        UserClickAccount,
     };
 };
 

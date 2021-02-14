@@ -24,7 +24,7 @@ QRec
     // main
     width: 100
     height: 100
-    color: CONST.INVISIBLE
+    color: CONST.COLOR_INVISIBLE
 
     QImage
     {

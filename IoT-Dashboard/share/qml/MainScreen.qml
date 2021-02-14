@@ -22,7 +22,7 @@ Item
         anchors.top: root.top
         anchors.left: menuBar.right
 
-        source: SCREEN.QML_SEARCH
+        source: AppModel.currentScreen !== null ? AppModel.currentScreen : ""
     }
 
 }

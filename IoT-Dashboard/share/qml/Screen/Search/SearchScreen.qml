@@ -5,7 +5,7 @@ import QmlCustomItem 1.0
 
 QRec {
     id: root
-    color: CONST.BACK_GROUND_COLOR
+    color: CONST.COLOR_BACK_GROUND
 
     QRec {
         id: inputBox
@@ -31,13 +31,24 @@ QRec {
             font.pixelSize: 20
             verticalAlignment: Text.AlignVCenter
 
-            text: CONST.IMAGE_FOLDER + "              " + inputBox.width
-            QRec {
-                anchors.fill: parent
-                color: "red"
-                opacity: 0.4
+            text: ""
+
+            onTextChanged: {
+//                console.log(text)
             }
         }
+    }
+
+    QRec {
+        id: searchList
+        width: root.width
+        height: root.height - inputBox.height - searchList.anchors.topMargin
+
+        anchors.top: inputBox.bottom
+        anchors.topMargin: inputBox.anchors.topMargin
+        anchors.left: root.left
+
+        color: CONST.COLOR_INVISIBLE
     }
 
 }
