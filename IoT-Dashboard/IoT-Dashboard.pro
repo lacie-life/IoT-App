@@ -76,7 +76,8 @@ DISTFILES += \
     share/res/light/home.svg \
     share/res/light/map.svg \
     share/res/light/search.svg \
-    share/res/light/user.svg
+    share/res/light/user.svg \
+    share/script/release.sh
 
 # COPY RESOURCES TO BUILD DIRECTORY
 copydata.commands = $(COPY_DIR) $$PWD/share/ $$OUT_PWD
