@@ -32,5 +32,4 @@ echo "RELEASE DONE"
 echo -e "\033[1;32mRELEASE DIRECTORY >>>> \033[00m$DEST_DIR"
 echo
 
-cd "$DEST_DIR"
-chmod +x "$APP_NAME"
+rm -r "$DEST_DIR/share/script"
