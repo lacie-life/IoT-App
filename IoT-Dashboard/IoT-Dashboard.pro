@@ -54,7 +54,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     CMakeLists.txt \
     share/qml/Component/Common/QImage.qml \
-    share/qml/Component/Common/QRectangle.qml \
+    share/qml/Component/Common/QRec.qml \
     share/qml/Component/Common/QText.qml \
     share/qml/Component/Common/QTimer.qml \
     share/qml/Component/QButton.qml \
@@ -77,3 +77,10 @@ DISTFILES += \
     share/res/light/map.svg \
     share/res/light/search.svg \
     share/res/light/user.svg
+
+# COPY RESOURCES TO BUILD DIRECTORY
+copydata.commands = $(COPY_DIR) $$PWD/share/ $$OUT_PWD
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata

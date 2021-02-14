@@ -7,7 +7,7 @@ Item
 {
     id: root
 
-    QRectangle {
+    QRec {
         id: bg
         anchors.fill: parent
         color: "#aaaaaa"

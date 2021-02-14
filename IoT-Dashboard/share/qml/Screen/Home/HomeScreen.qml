@@ -3,12 +3,11 @@ import "../../Component"
 import "../../Component/Common"
 import QmlCustomItem 1.0
 
-QRectangle {
+QRec {
     id: root
     color: CONST.BACK_GROUND_COLOR
 
-    QChartRealTime
-    {
+    QChartRealTime {
         id: chart
         width: 700
         height: 500

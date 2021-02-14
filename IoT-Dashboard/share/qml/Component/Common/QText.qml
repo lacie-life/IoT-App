@@ -1,7 +1,6 @@
 import QtQuick 2.0
 
-Text
-{
+Text {
     id: root
     property bool isBold: false
     property int fontSize: 25

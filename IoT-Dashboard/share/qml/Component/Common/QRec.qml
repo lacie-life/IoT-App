@@ -1,7 +1,6 @@
 import QtQuick 2.0
 
-Rectangle
-{
+Rectangle {
     id: root
     antialiasing: true
 }

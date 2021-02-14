@@ -1,7 +1,7 @@
 import QtQuick 2.0
 import "Common"
 
-QRectangle
+QRec
 {
     id: root
     // properties

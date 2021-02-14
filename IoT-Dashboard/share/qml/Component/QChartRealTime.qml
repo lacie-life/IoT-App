@@ -2,7 +2,7 @@ import QtQuick 2.0
 import QmlCustomItem 1.0
 import "Common"
 
-QRectangle {
+QRec {
     id: root
 
     property alias xTitle   :       chartID.xAxis

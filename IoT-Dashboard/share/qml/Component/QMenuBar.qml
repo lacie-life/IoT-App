@@ -2,7 +2,7 @@ import QtQuick 2.0
 import "Common"
 import QmlCustomItem 1.0
 
-QRectangle {
+QRec {
     id: root
     color: CONST.MENU_BAR_COLOR
     width: 80

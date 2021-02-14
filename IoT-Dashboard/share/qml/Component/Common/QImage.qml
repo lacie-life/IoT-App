@@ -5,7 +5,7 @@ Image
     id: root
     property alias backgroundColor: bg.color
 
-    QRectangle
+    QRec
     {
         id: bg
         anchors.fill: parent

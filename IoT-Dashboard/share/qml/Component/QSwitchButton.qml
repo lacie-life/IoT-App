@@ -22,7 +22,7 @@ QButton
     radius: (height < width) ? (height / 2) : (width / 2)
     color: isActive ? CONST.SWITCH_ON_COLOR : CONST.SWITCH_OFF_COLOR
 
-    QRectangle
+    QRec
     {
         id: noodID
         width: (root.width < root.height) ? (root.width - root.noodSizeOffset > 0 ? root.width - root.noodSizeOffset : 0)
