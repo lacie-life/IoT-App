@@ -32,7 +32,7 @@ QRectangle
         width: root.sizeImage
         height: width
         anchors.centerIn: root
-        source: root.sourceImage
+        imgName: root.sourceImage
         visible: (root.sourceImage !== "" && allowImage)
     }
 

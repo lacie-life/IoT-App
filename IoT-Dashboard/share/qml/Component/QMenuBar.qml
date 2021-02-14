@@ -43,15 +43,15 @@ QRectangle {
 
         switch(index) {
         case 0:
-            return CONST.IMAGE_FOLDER + colorFolder + CONST.SEARCH_IMG
+            return colorFolder + CONST.SEARCH_IMG
         case 1:
-            return CONST.IMAGE_FOLDER + colorFolder + CONST.HOME_IMG
+            return colorFolder + CONST.HOME_IMG
         case 2:
-            return CONST.IMAGE_FOLDER + colorFolder + CONST.CONTROL_IMG
+            return colorFolder + CONST.CONTROL_IMG
         case 3:
-            return CONST.IMAGE_FOLDER + colorFolder + CONST.MAP_IMG
+            return colorFolder + CONST.MAP_IMG
         case 4:
-            return CONST.IMAGE_FOLDER + colorFolder + CONST.USER_IMG
+            return colorFolder + CONST.USER_IMG
         default:
             return ""
         }

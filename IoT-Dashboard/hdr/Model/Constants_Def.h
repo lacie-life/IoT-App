@@ -6,6 +6,7 @@
 #include <QUrl>
 #include <QColor>
 #include <QMutex>
+#include <QCoreApplication>
 
 #ifndef MACRO_DEFINE
 #define MACRO_DEFINE
@@ -20,6 +21,10 @@
 
 #define DEFS Constants_Def::instance()
 #define DELETE_DEFS Constants_Def::DestroyInstance()
+
+#ifndef BUILD_DIR
+#define BUILD_DIR QCoreApplication::applicationDirPath()
+#endif
 
 class Constants_Def : public QObject
 {
@@ -64,18 +69,29 @@ private:
 
 
     // define property
-    // general
-    DEF_CONST(int, MAX_WIDTH        , 1280  )
-    DEF_CONST(int, MAX_HEIGHT       , 680   )
-    DEF_CONST(int, MENU_BAR_WIDTH   , 80    )
 
-    // image
-    DEF_CONST(QString, IMAGE_FOLDER , "qrc:/res/"   )
+    /******************************************* RESOURCE ************************************************/
+
+    // QML
+
+    // IMAGES
+    DEF_CONST(QString, IMAGE_FOLDER , BUILD_DIR + "/share/res/")
     DEF_CONST(QString, SEARCH_IMG   , "search.svg"  )
     DEF_CONST(QString, HOME_IMG     , "home.svg"    )
     DEF_CONST(QString, CONTROL_IMG  , "control.svg" )
     DEF_CONST(QString, MAP_IMG      , "map.svg"     )
     DEF_CONST(QString, USER_IMG     , "user.svg"    )
+
+
+    /********************************************** GENERAL **********************************************/
+    DEF_CONST(int, MAX_WIDTH        , 1280  )
+    DEF_CONST(int, MAX_HEIGHT       , 680   )
+    DEF_CONST(int, MENU_BAR_WIDTH   , 80    )
+
+    // search screen constant
+    DEF_CONST(int, INPUT_BOX_WIDTH      , 1100  )
+    DEF_CONST(int, INPUT_BOX_HEIGHT     , 60    )
+    DEF_CONST(int, INPUT_BOX_TOP_MARGIN , 20    )
 
     // constant color
     DEF_CONST(QColor, SWITCH_OFF_COLOR, "#ADADAD")

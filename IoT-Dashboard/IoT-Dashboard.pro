@@ -26,7 +26,7 @@ HEADERS += \
     $$HEADER_PATH/Model/EasingFunction.h \
     $$HEADER_PATH/Model/AppEnums.h \
     $$HEADER_PATH/View/Screen_Def.h \
-    hdr/Model/AppModel.h
+    $$HEADER_PATH/Model/AppModel.h
 
 SOURCES += \
     $$SOURCE_PATH/AppEngine.cpp \
@@ -36,10 +36,9 @@ SOURCES += \
     $$SOURCE_PATH/main.cpp \
     $$SOURCE_PATH/Plugin/QChart.cpp \
     $$SOURCE_PATH/Model/EasingFunction.cpp \
-    src/Model/AppModel.cpp
+    $$SOURCE_PATH/Model/AppModel.cpp
 
-RESOURCES += qml.qrc \
-    images.qrc
+RESOURCES +=
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
@@ -53,4 +52,28 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    CMakeLists.txt
+    CMakeLists.txt \
+    share/qml/Component/Common/QImage.qml \
+    share/qml/Component/Common/QRectangle.qml \
+    share/qml/Component/Common/QText.qml \
+    share/qml/Component/Common/QTimer.qml \
+    share/qml/Component/QButton.qml \
+    share/qml/Component/QChartRealTime.qml \
+    share/qml/Component/QMenuBar.qml \
+    share/qml/Component/QSensorClock.qml \
+    share/qml/Component/QSwitchButton.qml \
+    share/qml/MainScreen.qml \
+    share/qml/Screen/Home/HomeScreen.qml \
+    share/qml/Screen/Search/SearchScreen.qml \
+    share/qml/TestScreen.qml \
+    share/qml/main.qml \
+    share/res/dark/control.svg \
+    share/res/dark/home.svg \
+    share/res/dark/map.svg \
+    share/res/dark/search.svg \
+    share/res/dark/user.svg \
+    share/res/light/control.svg \
+    share/res/light/home.svg \
+    share/res/light/map.svg \
+    share/res/light/search.svg \
+    share/res/light/user.svg

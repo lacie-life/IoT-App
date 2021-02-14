@@ -1,6 +1,6 @@
 import QtQuick 2.0
-import "../Component"
-import "../Component/Common"
+import "../../Component"
+import "../../Component/Common"
 import QmlCustomItem 1.0
 
 QRectangle {

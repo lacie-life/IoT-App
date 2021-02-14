@@ -5,6 +5,7 @@
 #include <QString>
 #include <QMutex>
 #include <QDebug>
+#include <QCoreApplication>
 
 #ifndef SCREEN_DEF_MACROS
 #define SCREEN_DEF_MACROS
@@ -16,6 +17,11 @@
 
 #define SCR_DEF ScreenDef::getInstance()
 #define DELETE_SCR_DEF ScreenDef::DestroyInstance()
+
+#ifndef BUILD_DIR
+#define BUILD_DIR QCoreApplication::applicationDirPath()
+
+#endif
 
 class ScreenDef : public QObject
 {
@@ -53,13 +59,15 @@ private:
     void operator =(const ScreenDef&) = delete;
 
     // define screen goes here
-    DEF_SCREEN(QML_MAIN_APP, "qrc:/qml/main.qml")
-    DEF_SCREEN(QML_MAIN_SCREEN, "qrc:/qml/MainScreen.qml")
-    DEF_SCREEN(QML_TEST, "qrc:/qml/TestScreen.qml")
+
+    DEF_SCREEN(QML_FOLDER       , "file:" + BUILD_DIR + "/share/qml/")
+    DEF_SCREEN(QML_MAIN_APP     , QML_FOLDER() + "main.qml")
+    DEF_SCREEN(QML_MAIN_SCREEN  , QML_FOLDER() + "MainScreen.qml")
+    DEF_SCREEN(QML_TEST         , QML_FOLDER() + "TestScreen.qml")
 
     // detail screen
-    DEF_SCREEN(QML_HOME, "qrc:/qml/Screen/HomeScreen.qml")
-    DEF_SCREEN(QML_SEARCH, "qrc:/qml/Screen/SearchScreen.qml")
+    DEF_SCREEN(QML_HOME         , QML_FOLDER() + "Screen/Home/HomeScreen.qml")
+    DEF_SCREEN(QML_SEARCH       , QML_FOLDER() + "Screen/Search/SearchScreen.qml")
 };
 
 #endif // SCREEN_DEF_H

@@ -12,7 +12,8 @@ Image
         color: "transparent"
     }
 
-    source: ""
+    property string imgName: ""
+    source: "file:" + CONST.IMAGE_FOLDER + root.imgName
 
 }
 

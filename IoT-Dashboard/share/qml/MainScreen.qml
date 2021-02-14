@@ -22,7 +22,7 @@ Item
         anchors.top: root.top
         anchors.left: menuBar.right
 
-        source: "qrc:/qml/Screen/HomeScreen.qml"
+        source: SCREEN.QML_SEARCH
     }
 
 }
