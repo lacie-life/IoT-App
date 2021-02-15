@@ -27,11 +27,10 @@ QRec {
                 allowImage: true
                 anchors.fill: parent
 
-                sizeImage: width * 50 / 100
+                sizeImage: width * 0.5
                 sourceImage: getIcon(index, listScreen.currentIndex === index)
                 onClicked: {
                     listScreen.currentIndex = index
-                    console.log(getEventID(index))
                     AppModel.qmlTriggerHandler(getEventID(index))
                 }
                 color: listScreen.currentIndex === index ? CONST.COLOR_MENU_BAR_FOCUS : CONST.COLOR_INVISIBLE

@@ -14,7 +14,7 @@ QRec {
         anchors.horizontalCenter: root.horizontalCenter
         anchors.top: root.top
         anchors.topMargin: CONST.INPUT_BOX_TOP_MARGIN
-        radius: 20
+        radius: 30
         clip: true
 
         TextInput {
@@ -34,8 +34,22 @@ QRec {
             text: ""
 
             onTextChanged: {
-//                console.log(text)
+                // do nothing
             }
+        }
+
+        QButton {
+            id: searchIcon
+            width: inputBox.height
+            height: inputBox.height
+            radius: 30
+            anchors.verticalCenter: inputBox.verticalCenter
+            anchors.right: inputBox.right
+
+            allowImage: true
+            sourceImage: "dark/" + CONST.SEARCH_IMG
+            sizeImage: width * 0.4
+            opacity: 0.4
         }
     }
 

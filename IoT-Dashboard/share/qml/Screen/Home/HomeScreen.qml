@@ -19,7 +19,7 @@ QRec {
         xGrid: 12
         yGrid: 10
         lineColor: "blue"
-        grid: ENUMS.Grid
+        grid: ENUMS.YGrid
         easing: ENUMS.InOutSine
         dotSize: 4
 
@@ -46,7 +46,7 @@ QRec {
         repeat: true
         running: false
         onTriggered: {
-            var data = Math.random() * (100 - 0) + 0
+            var data = 20//Math.random() * (100 - 0) + 0
             chart.addData(data)
             clock.updateData(data)
         }

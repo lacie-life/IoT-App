@@ -91,7 +91,7 @@ private:
     // search screen constant
     DEF_CONST(int, INPUT_BOX_WIDTH      , 1100  )
     DEF_CONST(int, INPUT_BOX_HEIGHT     , 60    )
-    DEF_CONST(int, INPUT_BOX_TOP_MARGIN , 20    )
+    DEF_CONST(int, INPUT_BOX_TOP_MARGIN , 15    )
 
     // constant color
     DEF_CONST(QColor, COLOR_SWITCH_OFF, "#ADADAD")

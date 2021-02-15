@@ -10,7 +10,7 @@ QRec
     property bool allowHover: false
     property bool allowText: false
     property bool allowImage: false
-    property int sizeImage: 0
+    property int sizeImage: width
 
     // signals declare
 

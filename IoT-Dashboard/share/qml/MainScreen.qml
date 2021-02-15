@@ -15,14 +15,28 @@ Item
         anchors.top: root.top
     }
 
-    Loader {
-        id: funcScreen
+    QRec {
+        id: mainScreen
         width: root.width - CONST.MENU_BAR_WIDTH
         height: root.height
         anchors.top: root.top
         anchors.left: menuBar.right
 
-        source: AppModel.currentScreen !== null ? AppModel.currentScreen : ""
+        color: CONST.COLOR_INVISIBLE
+    }
+
+    Loader {
+        id: searchLoader
+        visible: AppModel.currentScreenID === ENUMS.SearchScreen
+        anchors.fill: mainScreen
+        source: SCREEN.QML_SEARCH
+    }
+
+    Loader {
+        id: homeLoader
+        visible: AppModel.currentScreenID === ENUMS.HomeScreen
+        anchors.fill: mainScreen
+        source: SCREEN.QML_HOME
     }
 
 }

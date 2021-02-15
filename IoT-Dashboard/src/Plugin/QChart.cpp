@@ -372,7 +372,8 @@ Dot QChart::dataToChart(qreal x, qreal y, qreal distance, int index)
 
 qreal QChart::mapData(qreal y)
 {
-    qreal ry = boundingRect().y() + 20 + ((m_yMax - y) / (m_yMax - m_yMin) * (boundingRect().height() - 20));
+    qreal ry = boundingRect().y() + DEFS->CHART_DRAW_OFFSET()
+            + ((m_yMax - y) / (m_yMax - m_yMin) * (boundingRect().height() - DEFS->CHART_DRAW_OFFSET()));
     return ry;
 }
 

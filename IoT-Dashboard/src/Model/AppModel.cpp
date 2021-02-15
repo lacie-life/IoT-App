@@ -1,5 +1,4 @@
 #include "AppModel.h"
-#include "AppEnums.h"
 #include "Screen_Def.h"
 #include <QDebug>
 
@@ -10,7 +9,7 @@
 
 AppModel::AppModel(QObject *parent)
     : QObject(parent)
-    , m_currentScreen {SCR_DEF->QML_SEARCH()}
+    , m_currentScreenID {static_cast<int>(AppEnums::SearchScreen)}
 {
 }
 
@@ -25,28 +24,20 @@ AppModel::AppModel(QObject *parent)
 //    return m_instance;
 //}
 
-QString AppModel::currentScreen() const
+int AppModel::currentScreenID() const
 {
-    return m_currentScreen;
-}
-
-void AppModel::setCurrentScreen(QString currentScreen)
-{
-    if (m_currentScreen == currentScreen)
-        return;
-
-    m_currentScreen = currentScreen;
-    emit currentScreenChanged(m_currentScreen);
+    return m_currentScreenID;
 }
 
 void AppModel::qmlTriggerHandler(int event)
 {
+    db << __FUNCTION__;
     switch (event) {
     case static_cast<int>(AppEnums::UserClickSearch):
-        setCurrentScreen(SCR_DEF->QML_SEARCH());
+        setCurrentScreenID(AppEnums::SearchScreen);
         break;
     case static_cast<int>(AppEnums::UserClickHome):
-        setCurrentScreen(SCR_DEF->QML_HOME());
+        setCurrentScreenID(AppEnums::HomeScreen);
         break;
     case static_cast<int>(AppEnums::UserClickControl):
     case static_cast<int>(AppEnums::UserClickMap):
@@ -54,6 +45,15 @@ void AppModel::qmlTriggerHandler(int event)
     default:
         break;
     }
+}
+
+void AppModel::setCurrentScreenID(int currentScreenID)
+{
+    if (m_currentScreenID == currentScreenID)
+        return;
+
+    m_currentScreenID = currentScreenID;
+    emit currentScreenIDChanged(m_currentScreenID);
 }
 
 

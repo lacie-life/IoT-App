@@ -9,7 +9,7 @@ Image
     {
         id: bg
         anchors.fill: parent
-        color: "transparent"
+        color: CONST.COLOR_INVISIBLE
     }
 
     property string imgName: ""

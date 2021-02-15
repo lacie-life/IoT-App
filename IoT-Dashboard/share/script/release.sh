@@ -11,7 +11,7 @@
 # MAIN SCRIPT
 BUILD_DIR="$HOME/Working/Release/IoT-App"
 APP_NAME="IoT-Dashboard"
-DEST_DIR="$HOME/Desktop/ReleaseApp/"
+DEST_DIR="$HOME/Desktop/ReleaseApp"
 
 clear
 echo -e -n "\033[1;36m"

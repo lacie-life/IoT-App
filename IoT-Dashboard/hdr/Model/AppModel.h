@@ -4,24 +4,26 @@
 #include <QObject>
 #include <QString>
 #include <QMutex>
+#include "AppEnums.h"
 
 //#define MODEL AppModel::getInstance()
 
 class AppModel : public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QString currentScreen READ currentScreen WRITE setCurrentScreen NOTIFY currentScreenChanged)
+    Q_PROPERTY(int currentScreenID READ currentScreenID WRITE setCurrentScreenID NOTIFY currentScreenIDChanged)
 public:
 //    static AppModel *getInstance();
     AppModel(QObject* parent = nullptr);
+    Q_INVOKABLE void qmlTriggerHandler(int event);
 
-    void setCurrentScreen(QString currentScreen);
+    int currentScreenID() const;
+
 public slots:
-    QString currentScreen() const;
-    void qmlTriggerHandler(int event);
+    void setCurrentScreenID(int currentScreenID);
 
 signals:
-    void currentScreenChanged(QString currentScreen);
+    void currentScreenIDChanged(int currentScreenID);
 
 private:
 //    AppModel(const AppModel& ) = delete;
@@ -29,7 +31,7 @@ private:
 
 //    static AppModel* m_instance;
 //    static QMutex m_lock;
-    QString m_currentScreen;
+    int m_currentScreenID;
 };
 
 #endif // APPMODEL_H
