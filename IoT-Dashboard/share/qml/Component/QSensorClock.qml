@@ -63,18 +63,6 @@ Item
         color: root.textColor
     }
 
-    QTimer {
-        id: updateDataTimer
-        interval: root.updateInterval * 1000
-        repeat: true
-        onTriggered: {
-            if (root.dataUpdate !== chartID.data) {
-                chartID.diffData = Math.abs(root.dataUpdate - chartID.data)
-                chartID.data = root.dataUpdate
-            }
-        }
-    }
-
     function updateData(newData) {
         chartID.diffData = Math.abs(newData - chartID.data)
         chartID.data = newData

@@ -12,8 +12,9 @@ Image
         color: CONST.COLOR_INVISIBLE
     }
 
-    property string imgName: ""
-    source: "file:" + CONST.IMAGE_FOLDER + root.imgName
+    property string imgName: CONST.EMPTY_STRING
+    source: imgName !== CONST.EMPTY_STRING ? CONST.IMAGE_FOLDER + root.imgName
+                                           : CONST.EMPTY_STRING
 
 }
 

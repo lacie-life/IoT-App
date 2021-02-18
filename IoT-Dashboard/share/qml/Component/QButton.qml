@@ -33,7 +33,7 @@ QRec
         height: width
         anchors.centerIn: root
         imgName: root.sourceImage
-        visible: (root.sourceImage !== "" && allowImage)
+        visible: (root.sourceImage !== CONST.EMPTY_STRING && allowImage)
     }
 
     QText

@@ -3,33 +3,27 @@ import "Component"
 import "Component/Common"
 import QmlCustomItem 1.0
 
-Item
-{
+QRec {
     id: root
+    color: CONST.COLOR_BACK_GROUND
 
-    QRec {
-        id: bg
-        anchors.fill: parent
-        color: "#aaaaaa"
-    }
-
-    QChartRealTime
-    {
+    QChartRealTime {
         id: chart
-        width: 400
-        height: 350
+        width: 700
+        height: 500
 
         anchors.verticalCenter: root.verticalCenter
         anchors.left: root.left
+        anchors.leftMargin: 20
 
         xGrid: 12
         yGrid: 10
         lineColor: "blue"
-        grid: ENUMS.Grid
+        grid: ENUMS.YGrid
         easing: ENUMS.InOutSine
         dotSize: 4
 
-        color: "#aaaaaa"
+        color: CONST.COLOR_BACK_GROUND
     }
 
     QSensorClock {
@@ -38,9 +32,11 @@ Item
         height: width
         anchors.verticalCenter: root.verticalCenter
         anchors.right: root.right
-        anchors.rightMargin: 25
+        anchors.rightMargin: 100
+        border: true
 
-        bgColor: "#aaaaaa"
+        bgColor: CONST.COLOR_BACK_GROUND
+        ringSize: 35
     }
 
     Timer {
@@ -59,5 +55,4 @@ Item
     Component.onCompleted: {
         timer.start()
     }
-
 }

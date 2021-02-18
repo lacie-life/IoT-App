@@ -59,6 +59,7 @@ DISTFILES += \
     share/qml/Component/Common/QTimer.qml \
     share/qml/Component/QButton.qml \
     share/qml/Component/QChartRealTime.qml \
+    share/qml/Component/QHorizontalSwipeButton.qml \
     share/qml/Component/QMenuBar.qml \
     share/qml/Component/QSensorClock.qml \
     share/qml/Component/QSwitchButton.qml \

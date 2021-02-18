@@ -2,36 +2,35 @@
 #include "Screen_Def.h"
 #include <QDebug>
 
-//AppModel* AppModel::m_instance = nullptr;
-//QMutex AppModel::m_lock;
+AppModel* AppModel::m_instance = nullptr;
+QMutex AppModel::m_lock;
 
 #define db qDebug()
 
 AppModel::AppModel(QObject *parent)
     : QObject(parent)
-    , m_currentScreenID {static_cast<int>(AppEnums::SearchScreen)}
+    , m_currentScreenID {static_cast<int>(AppEnums::HomeScreen)}
 {
 }
 
-//AppModel *AppModel::getInstance()
-//{
-//    m_lock.lock();
-//    if (nullptr != m_instance)
-//    {
-//        m_instance = new AppModel();
-//    }
-//    m_lock.unlock();
-//    return m_instance;
-//}
+AppModel *AppModel::getInstance()
+{
+    m_lock.lock();
+    if (nullptr == m_instance)
+    {
+        m_instance = new AppModel();
+    }
+    m_lock.unlock();
+    return m_instance;
+}
 
 int AppModel::currentScreenID() const
 {
     return m_currentScreenID;
 }
 
-void AppModel::qmlTriggerHandler(int event)
+void AppModel::qmlEventHandler(int event)
 {
-    db << __FUNCTION__;
     switch (event) {
     case static_cast<int>(AppEnums::UserClickSearch):
         setCurrentScreenID(AppEnums::SearchScreen);
@@ -43,6 +42,7 @@ void AppModel::qmlTriggerHandler(int event)
     case static_cast<int>(AppEnums::UserClickMap):
     case static_cast<int>(AppEnums::UserClickAccount):
     default:
+        // default case
         break;
     }
 }

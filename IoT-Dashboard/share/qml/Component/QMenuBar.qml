@@ -13,7 +13,7 @@ QRec {
         model: 5
         width: root.width
         height: root.height
-        currentIndex: 0
+        currentIndex: AppModel.currentScreenID
         interactive: contentHeight > height
 
         delegate: Item {
@@ -31,7 +31,7 @@ QRec {
                 sourceImage: getIcon(index, listScreen.currentIndex === index)
                 onClicked: {
                     listScreen.currentIndex = index
-                    AppModel.qmlTriggerHandler(getEventID(index))
+                    AppModel.qmlEventHandler(getEventID(index))
                 }
                 color: listScreen.currentIndex === index ? CONST.COLOR_MENU_BAR_FOCUS : CONST.COLOR_INVISIBLE
             }
