@@ -1,0 +1,15 @@
+[
+  {"hostname" : "127.0.0.1",
+    "mongodb-port" : 27017,
+   "databases" : 
+   [
+   	{
+   		"name" : "out-door",
+   		"collection" : ["node1", "node2", "node3"]
+   	},
+   	{
+   		"name" : "in-door",
+   		"collection" : ["node1", "node2", "node3", "node4"]
+   	}
+   ]}
+]
