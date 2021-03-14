@@ -75,5 +75,5 @@ target_compile_definitions(IoT-Dashboard
 target_link_libraries(IoT-Dashboard
   PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick Qt${QT_VERSION_MAJOR}::Mqtt ${LIBMONGOCXX_LIBRARIES} ${LIBBSONCXX_LIBRARIES})
 
-  file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/share
      DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
