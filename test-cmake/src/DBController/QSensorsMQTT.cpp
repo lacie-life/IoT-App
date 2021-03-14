@@ -18,7 +18,7 @@ int QSensorsMQTT::initBrokerHost()
     return 0;
 }
 
-int QSensorsMQTT::loadSensorsParamenters(int index)
+int QSensorsMQTT::loadSensorsParamenters()
 {
     QFile file(device_path.c_str());
     file.open(QIODevice::ReadOnly | QIODevice::Text);
@@ -40,12 +40,19 @@ int QSensorsMQTT::loadSensorsParamenters(int index)
 
 void QSensorsMQTT::publish(SensorNode node, QString mess)
 {
-
+    m_current_pub = node;
+    m_client->publish(node.topic_control, mess.toUtf8());
 }
 
 void QSensorsMQTT::subcrib(SensorNode node)
 {
-
+    m_client->unsubscribe(m_current_sub.topic_data);
+    m_current_device = node;
+    m_current_sub = node;
+    auto sub = m_client->subscribe(m_current_sub.topic_data, quint8(2));
+    if (!sub){
+        qDebug() << "Could not subcribe. Is there avalid connection?";
+    }
 }
 
 void QSensorsMQTT::connectMQTT(QString brokerName, qint16 port)

@@ -29,7 +29,8 @@ public:
     ~QSensorsMQTT();
 
     int initBrokerHost();
-    int loadSensorsParamenters(int index = 0);
+    int loadSensorsParamenters();
+    void connectMQTT(QString brokerName, qint16 port);
     void publish(SensorNode node, QString mess);
     void subcrib(SensorNode node);
 
@@ -38,11 +39,9 @@ public:
 
 private:
     QMqttClient *m_client;
-    int m_current_device;
-    QString m_current_sub;
-    QString m_current_pub;
-
-    void connectMQTT(QString brokerName, qint16 port);
+    SensorNode m_current_device;
+    SensorNode m_current_sub;
+    SensorNode m_current_pub;
 
 };
 
