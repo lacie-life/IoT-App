@@ -35,7 +35,8 @@ cmake ..                                \
     -DCMAKE_BUILD_TYPE=Release          \
     -DCMAKE_INSTALL_PREFIX=/usr/local
     
-// Only for MNMLSTC polyfill
+% Only for MNMLSTC polyfill
+
 sudo cmake --build . --target EP_mnmlstc_core
 
 cmake --build .
